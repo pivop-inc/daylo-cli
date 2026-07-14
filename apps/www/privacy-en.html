@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Daylo</title>
+    <meta
+      name="description"
+      content="Daylo Privacy Policy for measurement data, OAuth provider connections, API keys, logs, and related data."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="alternate" hreflang="ja" href="https://daylo.cc/privacy.html" />
+    <link rel="alternate" hreflang="en" href="https://daylo.cc/privacy-en.html" />
+    <link rel="alternate" hreflang="x-default" href="https://daylo.cc/privacy-en.html" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d110f'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='38' fill='%23e8b04b' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <article class="legal">
+      <div class="legal-head">
+        <h1>Privacy Policy</h1>
+        <p class="legal-meta">Last updated: July 14, 2026</p>
+        <p class="legal-meta">
+          Official Japanese version:
+          <a href="privacy.html">プライバシーポリシー</a>
+        </p>
+        <p class="legal-lead">
+          This English version is provided for convenience. If there is any conflict between this
+          English version and the Japanese version, the Japanese version controls. pivop Inc. ("we",
+          "us", or "our") sets out this Privacy Policy for the handling of personal information and
+          related data in Daylo (the "Service").
+        </p>
+      </div>
+
+      <h2><span class="no">§ 01</span>Operator Information</h2>
+      <ul>
+        <li>Operator: pivop Inc.</li>
+        <li>Address: Kinokuniya Building 4F, 1-4-2 Ebisu-Minami, Shibuya-ku, Tokyo, Japan</li>
+        <li>Representative / Personal Information Protection Manager: Suguru Katsuyama</li>
+        <li>Contact: <a href="mailto:hello@pivop.jp">hello@pivop.jp</a></li>
+      </ul>
+
+      <h2><span class="no">§ 02</span>Nature of the Service</h2>
+      <p>
+        The Service is a free beta service for developers. It retrieves weight-related measurements
+        from smart-scale provider APIs, including Withings and Tanita Health Planet, based on the
+        user's instruction, and exposes normalized data through a REST API and CLI. The Service is
+        not intended to provide medical diagnosis, treatment, advice, weight-loss coaching, health
+        evaluation, or emergency response.
+      </p>
+
+      <h2><span class="no">§ 03</span>Information We Collect</h2>
+      <p>We collect the following information to the extent necessary to provide the Service.</p>
+
+      <h3>(1) Account Information</h3>
+      <ul>
+        <li>Email address</li>
+        <li>OAuth identifiers and related information when signing in with a Google account</li>
+        <li>Magic link, session, API key, and device authorization information</li>
+      </ul>
+
+      <h3>(2) Measurement Data</h3>
+      <ul>
+        <li>
+          Weight (<code>weightKg</code>), body fat ratio (<code>fatRatioPercent</code>), measurement
+          time (<code>measuredAt</code>), provider, provider-native measurement ID, sync metadata,
+          and information from provider API responses necessary to provide the Service
+        </li>
+      </ul>
+      <p>
+        This information may include sensitive health-related data. We handle it only to the extent
+        necessary to provide the Service.
+      </p>
+
+      <h3>(3) Provider Connection Information</h3>
+      <ul>
+        <li>
+          OAuth access tokens, refresh tokens, connection status, and connection timestamps for
+          providers such as Withings and Tanita Health Planet
+        </li>
+        <li>Temporary information such as state values required for OAuth authorization flows</li>
+      </ul>
+
+      <h3>(4) Technical Information and Logs</h3>
+      <ul>
+        <li>
+          Request IDs (<code>X-Request-Id</code>), access timestamps, IP addresses, user agents,
+          error information, and operational logs related to authentication, sync, and API usage
+        </li>
+      </ul>
+
+      <h3>(5) Contact and Waitlist Information</h3>
+      <ul>
+        <li>Information the user sends to us by email, GitHub Issues, or other contact methods</li>
+      </ul>
+
+      <h2><span class="no">§ 04</span>Information We Do Not Collect or Use</h2>
+      <ul>
+        <li>
+          The Service does not currently collect credit card information or other payment
+          information.
+        </li>
+        <li>We do not sell user measurement data for advertising purposes.</li>
+        <li>We do not use user measurement data to train AI models.</li>
+        <li>
+          We do not send user measurement data to generative AI APIs such as OpenAI, Google Gemini,
+          or xAI.
+        </li>
+        <li>
+          The CLI local configuration file (<code>~/.config/daylo/config.json</code>) is stored on
+          the user's device. We do not collect that file itself.
+        </li>
+      </ul>
+
+      <h2><span class="no">§ 05</span>Purposes of Use</h2>
+      <ul>
+        <li>
+          To provide the Service, authenticate users, issue API keys, support device authorization,
+          and manage sessions
+        </li>
+        <li>
+          To retrieve, sync, normalize, and provide measurement data from connected providers based
+          on the user's instruction
+        </li>
+        <li>To connect, update, disconnect, and troubleshoot provider integrations</li>
+        <li>
+          To prevent abuse, maintain security, investigate incidents, and preserve service quality
+        </li>
+        <li>
+          To respond to inquiries and send important notices, including policy or terms updates
+        </li>
+        <li>To create non-identifying statistics and improve or develop the Service</li>
+      </ul>
+
+      <h2><span class="no">§ 06</span>Disclosure and External Services</h2>
+      <p>
+        We do not disclose personal information to third parties without user consent, except as
+        permitted by law. We use the following external services to the extent necessary to provide
+        the Service. Information may be processed or stored outside Japan.
+      </p>
+      <ul>
+        <li>Cloudflare, Inc. (application runtime, CDN, security, request processing)</li>
+        <li>Turso / libSQL (database)</li>
+        <li>Google LLC (Google OAuth sign-in)</li>
+        <li>Resend (email delivery such as magic links)</li>
+        <li>Withings (measurement data retrieval when connected by the user)</li>
+        <li>Tanita Health Planet (measurement data retrieval when connected by the user)</li>
+        <li>GitHub, Inc. (when the user joins a waitlist or contacts us through GitHub Issues)</li>
+        <li>Google Workspace (receiving, sending, and storing inquiry emails)</li>
+      </ul>
+      <p>
+        When a user connects a provider such as Withings or Tanita Health Planet, we communicate
+        with that provider's API based on the user's authorization. The provider's own terms of
+        service and privacy policy apply to that provider's handling of information.
+      </p>
+
+      <h2><span class="no">§ 07</span>Security Measures</h2>
+      <ul>
+        <li>Communications are encrypted using TLS.</li>
+        <li>Sensitive information such as provider access tokens is stored in encrypted form.</li>
+        <li>
+          API keys are used for authentication and are designed to be revocable and renewable if
+          compromised.
+        </li>
+        <li>Access to personal data is limited to what is necessary for business purposes.</li>
+        <li>
+          We collect logs for incident investigation and security response, and delete or anonymize
+          information when no longer necessary.
+        </li>
+        <li>
+          When using external services outside Japan, we review their security measures and
+          applicable country-level data protection environment to a reasonable extent.
+        </li>
+      </ul>
+      <p>
+        If you want to confirm details of our security measures, contact
+        <a href="mailto:hello@pivop.jp">hello@pivop.jp</a>. We will respond to a reasonable extent,
+        excluding details that could harm security.
+      </p>
+
+      <h2><span class="no">§ 08</span>Retention</h2>
+      <ul>
+        <li>
+          We retain account information, measurement data, and provider connection information until
+          the user deletes it or for as long as necessary to provide the Service.
+        </li>
+        <li>
+          Provider tokens are retained until the user runs
+          <code>daylo disconnect &lt;provider&gt;</code> or deletes all data.
+        </li>
+        <li>
+          Technical logs are deleted or anonymized within 90 days in principle. We may retain them
+          longer when necessary for abuse investigations, security response, or legal compliance.
+        </li>
+        <li>
+          Inquiry records may be retained after the response is complete to the extent necessary for
+          follow-up inquiries or dispute handling.
+        </li>
+      </ul>
+
+      <h2><span class="no">§ 09</span>Deletion, Access, and Correction</h2>
+      <p>Users can delete data or disconnect providers as follows.</p>
+      <ul>
+        <li>
+          Disconnect a provider:
+          <code>daylo disconnect &lt;provider&gt;</code> (deletes stored tokens for that provider)
+        </li>
+        <li>
+          Delete all data:
+          <code>DELETE /api/v1/me/data</code> (deletes measurement data and provider tokens)
+        </li>
+        <li>
+          Account deletion, access, correction, suspension of use, or suspension of third-party
+          disclosure requests: contact <a href="mailto:hello@pivop.jp">hello@pivop.jp</a>.
+        </li>
+      </ul>
+      <p>
+        We will verify your identity and respond within a reasonable period in accordance with
+        applicable law. If we cannot delete certain information for legal or security reasons, we
+        will explain the reason.
+      </p>
+
+      <h2><span class="no">§ 10</span>Cookies and Similar Technologies</h2>
+      <p>
+        We may use cookies and similar technologies for sign-in, session management, security, and
+        abuse prevention. We do not currently use advertising tracking cookies or third-party
+        advertising networks. If we add analytics or advertising features, we will update this
+        Policy.
+      </p>
+
+      <h2><span class="no">§ 11</span>Data Breach Response</h2>
+      <p>
+        If leakage, loss, damage, or similar incident involving personal data occurs and legal
+        reporting or user notification is required, we will confirm the facts and take necessary
+        measures, including reporting to the Personal Information Protection Commission of Japan and
+        notifying affected users.
+      </p>
+
+      <h2><span class="no">§ 12</span>Changes to This Policy</h2>
+      <p>
+        We may revise this Policy in response to legal changes, changes to external services, or
+        changes to the Service. For material changes, we will notify users by posting on the
+        Service, email, or another appropriate method.
+      </p>
+
+      <h2><span class="no">§ 13</span>Contact</h2>
+      <ul>
+        <li>pivop Inc.</li>
+        <li><a href="mailto:hello@pivop.jp">hello@pivop.jp</a></li>
+      </ul>
+
+      <a class="legal-back" href="index.html">← back to daylo</a>
+    </article>
+  </body>
+</html>
