@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daylo"
+  short_description: "Fetch your weight data from smart scales as JSON"
+  default_prompt: "What's my latest weight?"

@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daylo — one API for every smart scale</title>
+    <meta
+      name="description"
+      content="Vendor scale APIs all speak different dialects. Daylo normalizes Withings and Tanita behind one REST API and a JSON-first CLI, so your agent can just run `daylo latest`."
+    />
+    <meta property="og:title" content="Daylo — one API for every smart scale" />
+    <meta
+      property="og:description"
+      content="One normalized REST API and a JSON-first CLI for smart scale data. Built for AI agents and personal automation."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://daylo.cc/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://daylo.cc/assets/og.png" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d110f'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='38' fill='%23e8b04b' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ruler" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container">
+        <a class="wordmark" href="#top">daylo<span class="cursor" aria-hidden="true"></span></a>
+        <nav class="site-nav" aria-label="Site">
+          <a href="#problem">problem</a>
+          <a href="#api">api</a>
+          <a href="#agents">agents</a>
+          <a href="#providers">providers</a>
+          <a href="#quickstart">quickstart</a>
+          <a class="nav-gh" href="https://github.com/katsu105/daylo">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+              />
+            </svg>
+            github
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ======================================================= hero -->
+      <section class="hero">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/hero-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="assets/hero-loop.mp4" type="video/mp4" />
+        </video>
+        <div class="container">
+          <div class="hero-copy">
+            <p class="hero-kicker rise rise-1">for developers &amp; their agents</p>
+            <h1 class="rise rise-2">One API for <em>every</em> smart scale.</h1>
+            <p class="hero-sub rise rise-3">
+              Withings and Tanita each speak their own dialect — different auth, different date
+              formats, different ideas of what a number is. Daylo normalizes them behind
+              <strong>one REST API and a JSON-first CLI</strong>, so your agent can just run
+              <code>daylo latest</code>.
+            </p>
+            <div class="hero-ctas rise rise-4">
+              <a class="btn btn-primary" href="https://github.com/katsu105/daylo"
+                >View on GitHub →</a
+              >
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/katsu105/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
+                >Join hosted-API waitlist</a
+              >
+            </div>
+            <p class="hero-note rise rise-4">
+              open source · runs on your Cloudflare account ·
+              <code>bunx github:katsu105/daylo</code>
+            </p>
+          </div>
+
+          <div class="hero-term-wrap rise rise-5">
+            <div class="term term-lg">
+              <div class="term-head">
+                <span class="term-title">~ — your agent's morning</span>
+                <button
+                  class="copy-btn"
+                  type="button"
+                  aria-label="Copy commands"
+                  data-clip="daylo sync&#10;daylo latest"
+                >
+                  copy
+                </button>
+              </div>
+              <pre><code><span class="t-p">$</span> daylo sync
+{ <span class="t-k">"synced"</span>: { <span class="t-k">"withings"</span>: <span class="t-n">3</span> } }
+<span class="t-p">$</span> daylo latest
+{
+  <span class="t-k">"id"</span>: <span class="t-s">"withings:1841562847"</span>,
+  <span class="t-k">"provider"</span>: <span class="t-s">"withings"</span>,
+  <span class="t-k">"measuredAt"</span>: <span class="t-s">"2026-07-11T06:42:11Z"</span>,
+  <span class="t-k">"weightKg"</span>: <span class="t-n">72.4</span>,
+  <span class="t-k">"fatRatioPercent"</span>: <span class="t-n">18.2</span>
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= problem -->
+      <section class="section" id="problem">
+        <div class="container">
+          <p class="sec-label"><span class="no">§ 01</span>the problem</p>
+          <h2>Every vendor speaks its own dialect.</h2>
+          <p class="lede">
+            Here is the <strong>same 72.4&nbsp;kg reading</strong> from the same morning, as two
+            vendors actually return it. Payloads abridged; the pain is not.
+          </p>
+
+          <div class="dialects">
+            <div class="dialect">
+              <div class="term">
+                <div class="term-head">
+                  <span class="term-title"><span class="vendor">Withings</span> · Measure API</span>
+                </div>
+                <pre><code><span class="t-c">// GET .../measure?action=getmeas</span>
+{
+  <span class="t-k">"status"</span>: <span class="t-n">0</span>,
+  <span class="t-k">"body"</span>: {
+    <span class="t-k">"measuregrps"</span>: [{
+      <span class="t-k">"grpid"</span>: <span class="t-n">1841562847</span>,
+      <span class="t-k">"date"</span>: <span class="t-n">1783752131</span>,
+      <span class="t-k">"measures"</span>: [
+        { <span class="t-k">"value"</span>: <span class="t-n">72400</span>, <span class="t-k">"unit"</span>: <span class="t-n">-3</span>, <span class="t-k">"type"</span>: <span class="t-n">1</span> },
+        { <span class="t-k">"value"</span>: <span class="t-n">18200</span>, <span class="t-k">"unit"</span>: <span class="t-n">-3</span>, <span class="t-k">"type"</span>: <span class="t-n">6</span> }
+      ]
+    }]
+  }
+}</code></pre>
+              </div>
+              <ul class="dialect-pain">
+                <li>weight is <code>value × 10^unit</code> — 72400 × 10⁻³</li>
+                <li>the metric is a magic number: <code>type</code> 1 vs 6</li>
+                <li>timestamps are raw epoch seconds</li>
+              </ul>
+            </div>
+
+            <div class="dialect">
+              <div class="term">
+                <div class="term-head">
+                  <span class="term-title"><span class="vendor">Tanita</span> · Health Planet</span>
+                </div>
+                <pre><code><span class="t-c">// GET /status/innerscan.json?tag=6021,6022</span>
+{
+  <span class="t-k">"birth_date"</span>: <span class="t-s">"19900101"</span>,
+  <span class="t-k">"height"</span>: <span class="t-s">"172"</span>,
+  <span class="t-k">"sex"</span>: <span class="t-s">"male"</span>,
+  <span class="t-k">"data"</span>: [
+    { <span class="t-k">"date"</span>: <span class="t-s">"20260711154211"</span>,
+      <span class="t-k">"keydata"</span>: <span class="t-s">"72.40"</span>, <span class="t-k">"tag"</span>: <span class="t-s">"6021"</span> },
+    { <span class="t-k">"date"</span>: <span class="t-s">"20260711154211"</span>,
+      <span class="t-k">"keydata"</span>: <span class="t-s">"18.20"</span>, <span class="t-k">"tag"</span>: <span class="t-s">"6022"</span> }
+  ]
+}</code></pre>
+              </div>
+              <ul class="dialect-pain">
+                <li>every number is a string</li>
+                <li>dates are JST <code>yyyyMMddHHmmss</code> — no offset, no hint</li>
+                <li>
+                  the metric is a tag code: <code>"6021"</code> weight,
+                  <code>"6022"</code> fat&nbsp;%
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="problem-close">
+            Same ritual, same number — two schemas, two OAuth dances, two date systems. Your agent
+            shouldn't need a per-vendor adapter to know what you weigh.
+            <span class="fine"
+              >That adapter layer is exactly the code nobody wants to write twice. So we wrote it
+              once.</span
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================= the answer -->
+      <section class="section" id="api">
+        <div class="container">
+          <p class="sec-label"><span class="no">§ 02</span>the answer</p>
+          <h2>One shape, whatever the scale.</h2>
+          <p class="lede">
+            Every measurement comes back as the same normalized object — vendor quirks stay inside
+            the adapters, <strong>nothing leaks past the interface</strong>. This type is copied
+            verbatim from the v1 spec, and the API returns exactly this shape.
+          </p>
+
+          <div class="answer-grid">
+            <div class="col">
+              <div class="term">
+                <div class="term-head">
+                  <span class="term-title">docs/spec.md · the core type</span>
+                </div>
+                <pre><code><span class="t-kw">type</span> ProviderId = <span class="t-s">"withings"</span> | <span class="t-s">"tanita"</span>;
+
+<span class="t-kw">type</span> WeightMeasurement = {
+  <span class="t-k">id</span>: <span class="t-kw">string</span>;               <span class="t-c">// "&lt;provider&gt;:&lt;provider-native measurement id&gt;"</span>
+  <span class="t-k">provider</span>: ProviderId;
+  <span class="t-k">measuredAt</span>: <span class="t-kw">string</span>;       <span class="t-c">// ISO 8601, UTC (Tanita returns JST — adapters normalize)</span>
+  <span class="t-k">weightKg</span>: <span class="t-kw">number</span>;
+  <span class="t-k">fatRatioPercent</span>: <span class="t-kw">number</span> | <span class="t-kw">null</span>;
+};</code></pre>
+              </div>
+              <ul class="shape-notes">
+                <li>Numbers are numbers. Kilograms are kilograms.</li>
+                <li>
+                  Timestamps are ISO 8601 UTC — Tanita's JST strings are converted before you ever
+                  see them.
+                </li>
+                <li><code>id</code> is stable and prefixed by provider, so dedup is trivial.</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <div class="term">
+                <div class="term-head">
+                  <span class="term-title">curl · latest reading</span>
+                  <button
+                    class="copy-btn"
+                    type="button"
+                    aria-label="Copy curl command"
+                    data-clip='curl -s "$DAYLO_API_URL/api/v1/weight/latest" \&#10;  -H "Authorization: Bearer $DAYLO_API_KEY"'
+                  >
+                    copy
+                  </button>
+                </div>
+                <pre><code><span class="t-p">$</span> curl -s <span class="t-s">"$DAYLO_API_URL/api/v1/weight/latest"</span> \
+    <span class="t-fl">-H</span> <span class="t-s">"Authorization: Bearer $DAYLO_API_KEY"</span>
+{
+  <span class="t-k">"latest"</span>: {
+    <span class="t-k">"id"</span>: <span class="t-s">"withings:1841562847"</span>,
+    <span class="t-k">"provider"</span>: <span class="t-s">"withings"</span>,
+    <span class="t-k">"measuredAt"</span>: <span class="t-s">"2026-07-11T06:42:11Z"</span>,
+    <span class="t-k">"weightKg"</span>: <span class="t-n">72.4</span>,
+    <span class="t-k">"fatRatioPercent"</span>: <span class="t-n">18.2</span>
+  }
+}</code></pre>
+              </div>
+
+              <div class="term">
+                <div class="term-head">
+                  <span class="term-title">curl · 30-day history, one provider</span>
+                  <button
+                    class="copy-btn"
+                    type="button"
+                    aria-label="Copy curl command"
+                    data-clip='curl -s "$DAYLO_API_URL/api/v1/weight/list?days=30&amp;provider=withings" \&#10;  -H "x-api-key: $DAYLO_API_KEY"'
+                  >
+                    copy
+                  </button>
+                </div>
+                <pre><code><span class="t-p">$</span> curl -s <span class="t-s">"$DAYLO_API_URL/api/v1/weight/list?days=30&amp;provider=withings"</span> \
+    <span class="t-fl">-H</span> <span class="t-s">"x-api-key: $DAYLO_API_KEY"</span>
+{ <span class="t-k">"measurements"</span>: [ <span class="t-c">/* sorted by measuredAt, newest first */</span> ] }</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="endpoints">
+            <div class="endpoints-head">
+              <h3>/api/v1 — the whole surface</h3>
+              <span class="auth-note"
+                >auth: <code>Authorization: Bearer &lt;key&gt;</code> or <code>x-api-key</code> ·
+                every response carries <code>X-Request-Id</code></span
+              >
+            </div>
+            <div class="ep">
+              <span class="method method-get">GET</span>
+              <code class="path">/api/health</code>
+              <span class="desc"><code>{ "ok": true }</code> — no auth, for probes</span>
+            </div>
+            <div class="ep">
+              <span class="method method-get">GET</span>
+              <code class="path">/api/v1/weight/latest</code>
+              <span class="desc"><code>{ "latest": WeightMeasurement | null }</code></span>
+            </div>
+            <div class="ep">
+              <span class="method method-get">GET</span>
+              <code class="path">/api/v1/weight/list?days=30&amp;provider=withings</code>
+              <span class="desc"
+                >newest first · <code>days</code> default 30, max 365 ·
+                <code>provider</code> optional</span
+              >
+            </div>
+            <div class="ep">
+              <span class="method method-post">POST</span>
+              <code class="path">/api/v1/sync</code>
+              <span class="desc"
+                >pull new readings from every connected provider →
+                <code>{ "synced": { "withings": 3, "tanita": 0 } }</code></span
+              >
+            </div>
+            <div class="ep">
+              <span class="method method-get">GET</span>
+              <code class="path">/api/v1/providers</code>
+              <span class="desc">connection status per provider</span>
+            </div>
+            <div class="ep">
+              <span class="method method-post">POST</span>
+              <code class="path">/api/v1/providers/:provider/connect</code>
+              <span class="desc"
+                >begins OAuth → <code>{ "authorizeUrl": "...", "state": "..." }</code></span
+              >
+            </div>
+            <div class="ep">
+              <span class="method method-delete">DELETE</span>
+              <code class="path">/api/v1/providers/:provider</code>
+              <span class="desc">disconnect and delete stored tokens</span>
+            </div>
+            <div class="ep">
+              <span class="method method-delete">DELETE</span>
+              <code class="path">/api/v1/me/data</code>
+              <span class="desc"
+                >delete all your measurements and provider tokens — one call, no ceremony</span
+              >
+            </div>
+            <div class="ep">
+              <span class="method method-err"><span class="t-err">4xx/5xx</span></span>
+              <code class="path">errors, everywhere</code>
+              <span class="desc"
+                ><code
+                  >{ "error": { "code": "unauthorized", "message": "..." }, "requestId": "..."
+                  }</code
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= agents -->
+      <section class="section" id="agents">
+        <div class="container">
+          <p class="sec-label"><span class="no">§ 03</span>built for agents</p>
+          <h2>Your agent doesn't want a dashboard. It wants stdout.</h2>
+          <p class="lede">
+            The <code>daylo</code> CLI is JSON-first: machine-parseable output is the default and
+            <strong>humans are the special case</strong>. That inversion is the whole design.
+          </p>
+
+          <div class="agents-grid">
+            <ul class="contract-list">
+              <li>
+                <span class="k">stdout is JSON, by default</span>
+                <span class="v"
+                  ><code>--pretty</code> is the flag for humans — not the other way around.</span
+                >
+              </li>
+              <li>
+                <span class="k">errors are JSON too</span>
+                <span class="v"
+                  >On stderr, as <code>{ "error": { "code", "message" } }</code> — parse failures,
+                  not prose.</span
+                >
+              </li>
+              <li>
+                <span class="k">exit codes mean something</span>
+                <span class="v"
+                  >0 success · 1 error · 2 usage. Your retry logic reads three integers, not log
+                  lines.</span
+                >
+              </li>
+              <li>
+                <span class="k">config where tools expect it</span>
+                <span class="v"
+                  ><code>~/.config/daylo/config.json</code> (mode 600).
+                  <code>DAYLO_API_URL</code> or <code>--api-url</code> override for local dev.</span
+                >
+              </li>
+            </ul>
+
+            <div class="term">
+              <div class="term-head">
+                <span class="term-title">the entire integration surface of your agent</span>
+                <button
+                  class="copy-btn"
+                  type="button"
+                  aria-label="Copy commands"
+                  data-clip="daylo latest | jq .weightKg&#10;daylo list --days 30 --provider withings | jq length&#10;daylo sync"
+                >
+                  copy
+                </button>
+              </div>
+              <pre><code><span class="t-c"># current weight, one pipe away</span>
+<span class="t-p">$</span> daylo latest | jq <span class="t-s">.weightKg</span>
+<span class="t-n">72.4</span>
+
+<span class="t-c"># a month of history — `list` prints the array itself</span>
+<span class="t-p">$</span> daylo list <span class="t-fl">--days</span> <span class="t-n">30</span> <span class="t-fl">--provider</span> withings | jq <span class="t-s">length</span>
+<span class="t-n">31</span>
+
+<span class="t-c"># poll for fresh readings on your schedule</span>
+<span class="t-p">$</span> daylo sync
+{ <span class="t-k">"synced"</span>: { <span class="t-k">"withings"</span>: <span class="t-n">3</span>, <span class="t-k">"tanita"</span>: <span class="t-n">0</span> } }
+
+<span class="t-c"># and when a human is watching:</span>
+<span class="t-p">$</span> daylo latest <span class="t-fl">--pretty</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= providers -->
+      <section class="section" id="providers">
+        <div class="container">
+          <p class="sec-label"><span class="no">§ 04</span>providers</p>
+          <h2>Honest status, not a logo wall.</h2>
+          <p class="lede">
+            Two adapters, one contract test suite that runs identically against both. Here's exactly
+            where each stands today.
+          </p>
+
+          <div class="providers">
+            <div class="provider">
+              <img
+                class="provider-art"
+                src="assets/provider-withings.png"
+                alt="Abstract amber line-work portrait of a Withings smart scale"
+                loading="lazy"
+              />
+              <span class="status status-pending">prod unverified</span>
+              <h3>Withings</h3>
+              <p>
+                OAuth connect, token refresh with locking, encrypted token storage, sync, and
+                normalization are implemented and covered by the shared contract tests. Production
+                verification is paused while the developer account is sorted out.
+              </p>
+              <span class="provider-foot"
+                ><code>daylo connect withings</code> — pending production verification</span
+              >
+            </div>
+
+            <div class="provider">
+              <img
+                class="provider-art"
+                src="assets/provider-tanita.png"
+                alt="Abstract amber line-work portrait of a Tanita smart scale"
+                loading="lazy"
+              />
+              <span class="status status-live">supported</span>
+              <h3>Tanita Health Planet</h3>
+              <p>
+                Health Planet OAuth connect, token exchange, sync, and latest readings have been
+                verified end to end on daylo.cc. InnerScan weight and body-fat rows normalize behind
+                the same API shape.
+              </p>
+              <span class="provider-foot"><code>daylo connect tanita</code></span>
+            </div>
+
+            <div class="provider">
+              <span class="status status-open">yours?</span>
+              <h3>Your scale here</h3>
+              <p>
+                A provider is one interface: build the authorize URL, exchange the code, refresh
+                tokens, fetch measurements. If it passes the contract tests, it ships.
+              </p>
+              <span class="provider-foot"
+                ><a
+                  href="https://github.com/katsu105/daylo/issues/new?title=Provider%20request%3A%20"
+                  >request a provider →</a
+                ></span
+              >
+            </div>
+          </div>
+
+          <p class="honesty">
+            Why tell you about the pending one? Because you'd find out anyway, and because a status
+            page you can trust is worth more than a longer logo wall.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================= quickstart -->
+      <section class="section" id="quickstart">
+        <div class="container">
+          <p class="sec-label"><span class="no">§ 05</span>quickstart</p>
+          <h2>Zero to <code>daylo latest</code> in four commands.</h2>
+          <p class="lede">No install step — the CLI runs straight from the repo with bun.</p>
+
+          <div class="quickstart-grid">
+            <ol class="steps">
+              <li>
+                <span class="k">sign in</span>
+                <span class="v"
+                  ><code>login</code> opens your browser (Google or magic link) via the device flow,
+                  mints an API key named <code>cli</code>, and saves config to
+                  <code>~/.config/daylo/config.json</code>.</span
+                >
+              </li>
+              <li>
+                <span class="k">link your scale</span>
+                <span class="v"
+                  ><code>connect withings</code> opens the vendor's OAuth page in your browser and
+                  polls until the scale is linked (5-minute timeout). Then close the tab
+                  forever.</span
+                >
+              </li>
+              <li>
+                <span class="k">read the number</span>
+                <span class="v"
+                  ><code>sync</code> pulls new readings; <code>latest</code> prints normalized JSON.
+                  Cron it, pipe it, hand it to your agent — done.</span
+                >
+              </li>
+            </ol>
+
+            <div>
+              <div class="term term-lg">
+                <div class="term-head">
+                  <span class="term-title">quickstart — copy, paste, weigh</span>
+                  <button
+                    class="copy-btn"
+                    type="button"
+                    aria-label="Copy quickstart commands"
+                    data-clip="bunx github:katsu105/daylo login&#10;bunx github:katsu105/daylo connect withings&#10;bunx github:katsu105/daylo sync&#10;bunx github:katsu105/daylo latest"
+                  >
+                    copy
+                  </button>
+                </div>
+                <pre><code><span class="t-c"># runs from the repo — nothing to install but bun</span>
+<span class="t-p">$</span> bunx github:katsu105/daylo login
+<span class="t-p">$</span> bunx github:katsu105/daylo connect withings
+<span class="t-p">$</span> bunx github:katsu105/daylo sync
+<span class="t-p">$</span> bunx github:katsu105/daylo latest</code></pre>
+              </div>
+              <p class="honesty" style="margin-top: 1.1rem">
+                The CLI talks to any Daylo deployment — deploy the Worker to your own Cloudflare
+                account and point <code>DAYLO_API_URL</code> at it (a local
+                <code>wrangler dev</code> works too). Rather not run infrastructure?
+                <a
+                  href="https://github.com/katsu105/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
+                  >Join the hosted-API waitlist</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= story -->
+      <section class="story">
+        <div class="container">
+          <blockquote>
+            Daylo started as a favor for one friend who needed weight tracking with
+            <em>zero willpower required</em> — step on the scale, walk away, let the software care.
+            The scale already ships the number. The vendors just hide it behind different APIs. So
+            we built the boring part once.
+            <span class="attribution">— why this exists</span>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- ======================================================= CTA -->
+      <section class="cta">
+        <div class="container">
+          <h2>Your scale has an API.<br />Now it's a good one.</h2>
+          <p>
+            Read the spec, run the CLI tonight, wire it into your agent tomorrow morning. If you'd
+            rather we run the backend, say so — the waitlist is one click.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://github.com/katsu105/daylo"
+              >Star katsu105/daylo →</a
+            >
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/katsu105/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
+              >Join hosted-API waitlist</a
+            >
+          </div>
+          <p class="fine">
+            the waitlist is a GitHub issue with a prefilled title — no form, no tracking, no
+            newsletter
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>daylo — one API for every smart scale</span>
+        <span>
+          <a href="https://github.com/katsu105/daylo">github</a> ·
+          <a href="https://github.com/katsu105/daylo/blob/main/docs/spec.md">the spec</a> ·
+          <a
+            href="https://github.com/katsu105/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
+            >waitlist</a
+          >
+          · <a href="privacy.html">privacy</a> ·
+          <a href="terms.html">terms</a>
+        </span>
+        <span>every sample on this page is copied from the v1 spec — it's the contract</span>
+      </div>
+    </footer>
+
+    <script>
+      for (const btn of document.querySelectorAll(".copy-btn")) {
+        btn.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(btn.dataset.clip);
+            btn.textContent = "copied ✓";
+            btn.classList.add("copied");
+            setTimeout(() => {
+              btn.textContent = "copy";
+              btn.classList.remove("copied");
+            }, 1600);
+          } catch {
+            /* clipboard unavailable (e.g. non-secure context) — button is a no-op */
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
