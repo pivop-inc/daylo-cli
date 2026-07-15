@@ -1,0 +1,53 @@
+name: Provider request
+description: Request support for a smart scale provider or health data source.
+title: "Provider request: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Daylo normalizes smart scale data behind one API and CLI. Provider requests are most useful when they include API documentation and the measurements you need.
+  - type: input
+    id: provider
+    attributes:
+      label: Provider name
+      placeholder: Garmin Index, Fitbit Aria, Omron, Eufy, ...
+    validations:
+      required: true
+  - type: input
+    id: docs
+    attributes:
+      label: API or developer documentation URL
+      description: Link to OAuth/API docs, export docs, or any official integration material.
+      placeholder: https://...
+  - type: dropdown
+    id: access
+    attributes:
+      label: Integration path
+      options:
+        - Official API with OAuth
+        - Official API key or token
+        - File export
+        - Apple Health or Google Health Connect bridge
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measurements needed
+      description: Which fields should daylo normalize for this provider?
+      placeholder: Weight, body fat percentage, timestamp, impedance, muscle mass, visceral fat, ...
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Your workflow
+      description: How would this provider support fit into your CLI, API, or AI-agent flow?
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Access and testing
+      options:
+        - label: I can help test this provider with my own account or exported sample data.
+        - label: I can share redacted API responses or export samples privately if needed.

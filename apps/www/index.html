@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Daylo — one API for every smart scale</title>
+    <title>Daylo — hosted API and open-source tools for smart scale data</title>
     <meta
       name="description"
-      content="Vendor scale APIs all speak different dialects. Daylo normalizes Withings and Tanita behind one REST API and a JSON-first CLI, so your agent can just run `daylo latest`."
+      content="Daylo v0.1 is a free beta hosted API plus open-source CLI, API spec, and agent skill for normalized smart scale data."
     />
-    <meta property="og:title" content="Daylo — one API for every smart scale" />
+    <meta
+      property="og:title"
+      content="Daylo — hosted API and open-source tools for smart scale data"
+    />
     <meta
       property="og:description"
-      content="One normalized REST API and a JSON-first CLI for smart scale data. Built for AI agents and personal automation."
+      content="Free beta, no card required. Hosted API access by invite or waitlist, with open-source CLI, spec, and agent skill."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://daylo.cc/assets/og.png" />
@@ -43,6 +46,10 @@
           <a href="#agents">agents</a>
           <a href="#providers">providers</a>
           <a href="#quickstart">quickstart</a>
+          <a href="security.html">security</a>
+          <a href="status.html">status</a>
+          <a href="changelog.html">changelog</a>
+          <a href="contact.html">contact</a>
           <a class="nav-gh" href="https://github.com/pivop-inc/daylo">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path
@@ -72,28 +79,31 @@
         </video>
         <div class="container">
           <div class="hero-copy">
-            <p class="hero-kicker rise rise-1">for developers &amp; their agents</p>
+            <p class="hero-kicker rise rise-1">v0.1 free beta for developers &amp; agents</p>
             <h1 class="rise rise-2">One API for <em>every</em> smart scale.</h1>
             <p class="hero-sub rise rise-3">
               Withings and Tanita each speak their own dialect — different auth, different date
-              formats, different ideas of what a number is. Daylo normalizes them behind
-              <strong>one REST API and a JSON-first CLI</strong>, so your agent can just run
-              <code>daylo latest</code>.
+              formats, different ideas of what a number is. Daylo v0.1 is
+              <strong>a hosted API plus open-source CLI, spec, and agent skill</strong>, so your
+              agent can just run <code>daylo latest</code>.
             </p>
             <div class="hero-ctas rise rise-4">
               <a class="btn btn-primary" href="https://github.com/pivop-inc/daylo"
                 >View on GitHub →</a
               >
-              <a
-                class="btn btn-ghost"
-                href="https://github.com/pivop-inc/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
-                >Join hosted-API waitlist</a
-              >
+              <a class="btn btn-ghost" href="contact.html">Get beta access</a>
             </div>
             <p class="hero-note rise rise-4">
-              open source · runs on your Cloudflare account ·
-              <code>bunx github:pivop-inc/daylo</code>
+              free beta · no card required · hosted API by invite or waitlist ·
+              <code>bunx @pivop/daylo</code>
             </p>
+            <div class="beta-facts rise rise-4" aria-label="Beta access summary">
+              <span>Free beta</span>
+              <span>No card required</span>
+              <span>Invite or waitlist</span>
+              <span>Hosted API at daylo.cc</span>
+              <span>Open-source CLI/spec/skill</span>
+            </div>
           </div>
 
           <div class="hero-term-wrap rise rise-5">
@@ -363,7 +373,8 @@
           <h2>Your agent doesn't want a dashboard. It wants stdout.</h2>
           <p class="lede">
             The <code>daylo</code> CLI is JSON-first: machine-parseable output is the default and
-            <strong>humans are the special case</strong>. That inversion is the whole design.
+            <strong>humans are the special case</strong>. The public repo includes the CLI, the API
+            contract, and the agent skill for using it from coding-agent sessions.
           </p>
 
           <div class="agents-grid">
@@ -482,7 +493,7 @@
               </p>
               <span class="provider-foot"
                 ><a
-                  href="https://github.com/pivop-inc/daylo/issues/new?title=Provider%20request%3A%20"
+                  href="https://github.com/pivop-inc/daylo/issues/new?template=provider_request.yml"
                   >request a provider →</a
                 ></span
               >
@@ -539,25 +550,22 @@
                     class="copy-btn"
                     type="button"
                     aria-label="Copy quickstart commands"
-                    data-clip="bunx github:pivop-inc/daylo login&#10;bunx github:pivop-inc/daylo connect withings&#10;bunx github:pivop-inc/daylo sync&#10;bunx github:pivop-inc/daylo latest"
+                    data-clip="bunx @pivop/daylo login&#10;bunx @pivop/daylo connect withings&#10;bunx @pivop/daylo sync&#10;bunx @pivop/daylo latest"
                   >
                     copy
                   </button>
                 </div>
                 <pre><code><span class="t-c"># runs from the repo — nothing to install but bun</span>
-<span class="t-p">$</span> bunx github:pivop-inc/daylo login
-<span class="t-p">$</span> bunx github:pivop-inc/daylo connect withings
-<span class="t-p">$</span> bunx github:pivop-inc/daylo sync
-<span class="t-p">$</span> bunx github:pivop-inc/daylo latest</code></pre>
+<span class="t-p">$</span> bunx @pivop/daylo login
+<span class="t-p">$</span> bunx @pivop/daylo connect withings
+<span class="t-p">$</span> bunx @pivop/daylo sync
+<span class="t-p">$</span> bunx @pivop/daylo latest</code></pre>
               </div>
               <p class="honesty" style="margin-top: 1.1rem">
-                The CLI talks to any Daylo deployment — deploy the Worker to your own Cloudflare
-                account and point <code>DAYLO_API_URL</code> at it (a local
-                <code>wrangler dev</code> works too). Rather not run infrastructure?
-                <a
-                  href="https://github.com/pivop-inc/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
-                  >Join the hosted-API waitlist</a
-                >.
+                Hosted API access is invite-first while v0.1 stays small. If you have an invite,
+                sign in and use the default API; if not, join the waitlist. The beta is free and
+                does not require a credit card. For development and tests, the CLI can still target
+                a compatible API URL with <code>DAYLO_API_URL</code>.
               </p>
             </div>
           </div>
@@ -582,21 +590,17 @@
         <div class="container">
           <h2>Your scale has an API.<br />Now it's a good one.</h2>
           <p>
-            Read the spec, run the CLI tonight, wire it into your agent tomorrow morning. If you'd
-            rather we run the backend, say so — the waitlist is one click.
+            Read the spec, run the open-source CLI, and give your agent the skill. The hosted API is
+            free during beta, no card is required, and access opens by invite or waitlist.
           </p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="https://github.com/pivop-inc/daylo"
               >Star pivop-inc/daylo →</a
             >
-            <a
-              class="btn btn-ghost"
-              href="https://github.com/pivop-inc/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
-              >Join hosted-API waitlist</a
-            >
+            <a class="btn btn-ghost" href="contact.html">Get beta access</a>
           </div>
           <p class="fine">
-            the waitlist is a GitHub issue with a prefilled title — no form, no tracking, no
+            the beta-access path is a GitHub issue or email - no payment form, no tracking
             newsletter
           </p>
         </div>
@@ -608,15 +612,16 @@
         <span>daylo — one API for every smart scale</span>
         <span>
           <a href="https://github.com/pivop-inc/daylo">github</a> ·
-          <a href="https://github.com/pivop-inc/daylo/blob/main/docs/spec.md">the spec</a> ·
-          <a
-            href="https://github.com/pivop-inc/daylo/issues/new?title=Hosted%20API%20waitlist%3A%20add%20me"
+          <a href="https://github.com/pivop-inc/daylo/blob/main/docs/spec.md">spec</a> ·
+          <a href="https://github.com/pivop-inc/daylo/issues/new?template=hosted_api_waitlist.yml"
             >waitlist</a
           >
-          · <a href="privacy-en.html">privacy</a> ·
+          · <a href="security.html">security</a> · <a href="status.html">status</a> ·
+          <a href="changelog.html">changelog</a> · <a href="contact.html">contact</a> ·
+          <a href="privacy-en.html">privacy</a> ·
           <a href="terms-en.html">terms</a>
         </span>
-        <span>every sample on this page is copied from the v1 spec — it's the contract</span>
+        <span>v0.1 beta: hosted API plus open-source CLI, spec, and agent skill</span>
       </div>
     </footer>
 

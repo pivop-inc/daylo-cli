@@ -1,4 +1,4 @@
-# daylo (CLI)
+# @pivop/daylo (CLI)
 
 One API for every smart scale — `daylo` is the JSON-first command line client.
 stdout is machine-parseable JSON by default (AI agents are the primary consumer);
@@ -7,10 +7,25 @@ stdout is machine-parseable JSON by default (AI agents are the primary consumer)
 
 Zero runtime dependencies — it runs directly on Bun's built-ins.
 
+## Install
+
+The official npm package runs with Bun:
+
+```sh
+alias daylo="bunx @pivop/daylo"
+daylo latest
+```
+
+If the npm package is not available during a release window, run the same CLI
+from GitHub:
+
+```sh
+alias daylo="bunx github:pivop-inc/daylo"
+```
+
 ## Run it from the repo
 
-v1 installs via `bunx github:pivop-inc/daylo`; from a checkout you run the binary
-directly with Bun:
+From a checkout, run the binary directly with Bun:
 
 ```sh
 bun apps/cli/bin/daylo.ts <command> [options]
@@ -45,13 +60,13 @@ Other env knobs: `DAYLO_NO_BROWSER=1` suppresses browser launch (headless / CI);
 `DAYLO_LOGIN_POLL_INTERVAL_MS` and `DAYLO_LOGIN_TIMEOUT_MS` tune the login device-flow
 poll; `DAYLO_CONNECT_POLL_INTERVAL_MS` and `DAYLO_CONNECT_TIMEOUT_MS` tune the connect poll.
 
-## Point it at a local backend
+## Point it at a compatible API
 
-Run the backend with `wrangler dev` (defaults to `http://localhost:8787`) and
-either pass `--api-url` or export the env:
+The default endpoint is `https://daylo.cc`. For a protocol-compatible API,
+staging endpoint, or test fixture, either pass `--api-url` or export the env:
 
 ```sh
-export DAYLO_API_URL=http://localhost:8787
+export DAYLO_API_URL=https://example.com
 bun bin/daylo.ts login
 bun bin/daylo.ts latest
 ```
@@ -64,17 +79,17 @@ bunx tsc --noEmit              # types
 bunx oxlint                    # lint
 ```
 
-### Run the E2E suite against a real backend
+### Run the E2E suite against a compatible API
 
 The E2E suite (`test/e2e/cli.test.ts`) drives the real compiled binary over HTTP.
 By default it starts the in-process mock (`test/e2e/mock-server.ts`). To re-run the
-**protocol** assertions (shapes, exit codes, error envelope) against a real
-backend, inject its URL — the fixture-value assertions auto-skip. `daylo login`
-uses the browser device flow (needs a human), so supply a pre-minted API key and
-the suite writes config directly instead of running `login`:
+**protocol** assertions (shapes, exit codes, error envelope) against a compatible
+API, inject its URL — the fixture-value assertions auto-skip. `daylo login` uses
+the browser device flow (needs a human), so supply a pre-minted API key and the
+suite writes config directly instead of running `login`:
 
 ```sh
-DAYLO_E2E_API_URL=http://localhost:8787 \
+DAYLO_E2E_API_URL=https://daylo.cc \
 DAYLO_E2E_API_KEY=daylo_... \
 bun test test/e2e/cli.test.ts
 ```

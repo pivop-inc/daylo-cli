@@ -1,0 +1,59 @@
+name: Hosted API waitlist
+description: Ask for access to the hosted daylo API at daylo.cc.
+title: "Hosted API waitlist: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form if you want access to the hosted daylo API. Do not include secrets, OAuth tokens, or private health data.
+  - type: input
+    id: contact
+    attributes:
+      label: Contact
+      description: GitHub handle, email, or another contact path we can use.
+      placeholder: "@your-handle"
+    validations:
+      required: true
+  - type: dropdown
+    id: use_case
+    attributes:
+      label: Primary use case
+      options:
+        - Personal CLI use
+        - AI agent integration
+        - App or service integration
+        - Research or analysis
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Intended workflow
+      description: How do you want to use the API or JSON-first CLI?
+      placeholder: "Example: sync my Withings scale daily, then let an AI agent read the latest measurement as JSON."
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Scale provider
+      options:
+        - Withings
+        - Tanita Health Planet
+        - Both launch providers
+        - Other or not sure
+    validations:
+      required: true
+  - type: textarea
+    id: integration
+    attributes:
+      label: Integration details
+      description: CLI, REST API, agent skill, automation platform, or other client details.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I will not post API keys, OAuth tokens, or private health measurements in this issue.
+          required: true

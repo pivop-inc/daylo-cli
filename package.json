@@ -1,14 +1,42 @@
 {
-  "name": "daylo",
+  "name": "@pivop/daylo",
   "version": "0.1.0",
-  "private": true,
+  "description": "JSON-first Bun CLI for the Daylo smart-scale API.",
+  "keywords": [
+    "bun",
+    "cli",
+    "daylo",
+    "smart-scale",
+    "tanita",
+    "weight",
+    "withings"
+  ],
+  "homepage": "https://daylo.cc",
+  "bugs": {
+    "url": "https://github.com/pivop-inc/daylo/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pivop-inc/daylo.git"
+  },
   "bin": {
-    "daylo": "./apps/cli/bin/daylo.ts"
+    "daylo": "apps/cli/bin/daylo.ts"
   },
   "workspaces": [
     "apps/*"
   ],
+  "files": [
+    "apps/cli/bin",
+    "apps/cli/src",
+    "docs/spec.md",
+    "LICENSE",
+    "README.md"
+  ],
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "oxlint",
     "format": "oxfmt",

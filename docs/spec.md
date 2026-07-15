@@ -72,7 +72,7 @@ One contract test suite runs identically against both adapters with mocked HTTP 
 
 ## CLI (`daylo`)
 
-JSON-first: stdout is machine-parseable JSON by default — AI agents are the primary consumer. `--pretty` renders for humans. Errors go to stderr as JSON `{ "error": { "code", "message" } }`. Exit codes: 0 success, 1 error, 2 usage. Config at `~/.config/daylo/config.json` (mode 600) storing `{ apiUrl, apiKey }`. `DAYLO_API_URL` env and `--api-url` flag override (needed for local dev against `wrangler dev`).
+JSON-first: stdout is machine-parseable JSON by default — AI agents are the primary consumer. `--pretty` renders for humans. Errors go to stderr as JSON `{ "error": { "code", "message" } }`. Exit codes: 0 success, 1 error, 2 usage. Config at `~/.config/daylo/config.json` (mode 600) storing `{ apiUrl, apiKey }`. `DAYLO_API_URL` env and `--api-url` flag override (needed for compatible API implementations, staging, and tests).
 
 - `daylo login` — no prompts; runs the device authorization flow (opens `GET /device?user_code=...` in the browser for the user to approve), polls for approval, mints an API key `cli`, and saves config
 - `daylo connect withings|tanita` — `POST .../connect`, open `authorizeUrl` in browser, poll `GET /api/v1/providers` until connected (timeout 5 min)
@@ -81,8 +81,8 @@ JSON-first: stdout is machine-parseable JSON by default — AI agents are the pr
 - `daylo latest [--pretty]` → the `latest` object (or `null`)
 - `daylo list [--days 30] [--provider withings|tanita] [--pretty]` → the `measurements` array
 
-Install path for v1 is `bunx github:pivop-inc/daylo` (npm publish comes later), so the CLI must run directly with bun from the repo.
+Install path for v1 is `bunx @pivop/daylo`. `bunx github:pivop-inc/daylo` remains a source fallback during npm release windows. The CLI runs directly on Bun.
 
 ## Verification (applies to every workspace)
 
-`bun test` green, `bunx tsc --noEmit` clean, `bunx oxlint` clean. Backend: contract tests pass for both adapters. CLI: E2E script against a mock server, re-runnable against a real local backend.
+`bun test` green, `bunx tsc --noEmit` clean, `bunx oxlint` clean. Backend: contract tests pass for both adapters. CLI: E2E script against a mock server, re-runnable against a compatible API.

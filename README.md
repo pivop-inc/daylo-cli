@@ -1,5 +1,9 @@
 # Daylo
 
+[![CI](https://github.com/pivop-inc/daylo/actions/workflows/ci.yml/badge.svg)](https://github.com/pivop-inc/daylo/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@pivop/daylo.svg)](https://www.npmjs.com/package/@pivop/daylo)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **One API for every smart scale.**
 
 Daylo connects vendor scale APIs (Withings, Tanita Health Planet) and exposes your weight data through a single normalized REST API and a JSON-first CLI. No UI, no dashboard — just your weight as clean JSON, for developers and AI agents.
@@ -8,15 +12,22 @@ Every vendor has its own OAuth flow, date format, and payload shape. Daylo hides
 
 ## Quickstart
 
-Runs straight from GitHub with [Bun](https://bun.sh) (npm publish comes later):
+Runs straight from npm with [Bun](https://bun.sh):
 
 ```sh
-alias daylo="bunx github:pivop-inc/daylo"
+alias daylo="bunx @pivop/daylo"
 
 daylo login              # opens your browser to sign in, creates an API key
 daylo connect withings   # opens your browser for OAuth, waits until connected
 daylo sync               # pull your measurements from the provider
 daylo latest             # your most recent weight, as JSON
+```
+
+If the npm package is not available during a release window, run the same CLI
+from GitHub:
+
+```sh
+alias daylo="bunx github:pivop-inc/daylo"
 ```
 
 ```json

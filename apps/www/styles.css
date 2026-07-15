@@ -427,6 +427,23 @@ td code {
   white-space: nowrap;
 }
 
+.beta-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.71875rem;
+  color: var(--muted);
+}
+
+.beta-facts span {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(10, 14, 12, 0.68);
+  padding: 0.26rem 0.65rem;
+}
+
 /* entrance: one orchestrated stagger, motion-safe only */
 @media (prefers-reduced-motion: no-preference) {
   .rise {
@@ -1221,6 +1238,76 @@ section {
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 0.1em 0.4em;
+}
+.legal .trust-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin-top: 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+.legal .trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.75rem;
+}
+.legal .trust-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 1rem 1.1rem;
+}
+.legal .trust-card h3 {
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  color: var(--amber-bright);
+  margin: 0 0 0.35rem;
+}
+.legal .trust-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.legal .trust-kv {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0 1.5rem;
+}
+.legal .trust-kv div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.8fr) minmax(0, 1.6fr);
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.legal .trust-kv div:last-child {
+  border-bottom: none;
+}
+.legal .trust-kv dt {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--faint);
+}
+.legal .trust-kv dd {
+  margin: 0;
+  color: var(--muted);
+}
+.legal .trust-note {
+  border-left: 2px solid var(--amber);
+  color: var(--muted);
+  padding: 0.35rem 0 0.35rem 1rem;
+}
+@media (max-width: 680px) {
+  .legal .trust-grid,
+  .legal .trust-kv div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .legal .trust-kv div {
+    gap: 0.25rem;
+  }
 }
 /* placeholder markers — obvious in draft, easy to grep before publish */
 .legal .ph {

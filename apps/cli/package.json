@@ -1,9 +1,20 @@
 {
-  "name": "cli",
+  "name": "@pivop/daylo-cli",
   "version": "0.1.0",
   "private": true,
+  "description": "Internal CLI workspace for the @pivop/daylo Bun package.",
+  "homepage": "https://daylo.cc",
+  "bugs": {
+    "url": "https://github.com/pivop-inc/daylo/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pivop-inc/daylo.git",
+    "directory": "apps/cli"
+  },
   "bin": {
-    "daylo": "./bin/daylo.ts"
+    "daylo": "bin/daylo.ts"
   },
   "type": "module",
   "scripts": {

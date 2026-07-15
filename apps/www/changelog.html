@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Changelog - Daylo</title>
+    <meta
+      name="description"
+      content="Daylo public changelog for the v0.1 hosted API beta, open-source CLI, spec, and agent skill."
+    />
+    <meta name="robots" content="index,follow" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d110f'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='38' fill='%23e8b04b' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <article class="legal">
+      <div class="legal-head">
+        <h1>Changelog</h1>
+        <p class="legal-meta">Last updated: July 15, 2026</p>
+        <p class="legal-meta">Product line: Daylo v0.1 hosted API beta</p>
+        <p class="legal-lead">
+          A short public log for beta-facing changes. The source of truth for API shape remains
+          <a href="https://github.com/pivop-inc/daylo/blob/main/docs/spec.md">docs/spec.md</a>; this
+          page explains what changed for users evaluating trust and access.
+        </p>
+        <nav class="trust-nav" aria-label="Trust pages">
+          <a href="security.html">security</a>
+          <a href="status.html">status</a>
+          <a href="changelog.html">changelog</a>
+          <a href="contact.html">contact</a>
+          <a href="index.html">home</a>
+        </nav>
+      </div>
+
+      <h2><span class="no">§ 01</span>July 15, 2026 - Trust Pages</h2>
+      <ul>
+        <li>Added static Security, Status, Changelog, and Contact pages.</li>
+        <li>
+          Clarified the Daylo v0.1 shape: hosted API plus open-source CLI, API spec, and agent
+          skill.
+        </li>
+        <li>Clarified beta access: free beta, no card required, invite or waitlist.</li>
+        <li>
+          Weakened homepage self-hosting language so the hosted API is the primary product path.
+        </li>
+      </ul>
+
+      <h2><span class="no">§ 02</span>Current v0.1 Beta Snapshot</h2>
+      <ul>
+        <li>Hosted API at <code>https://daylo.cc</code>.</li>
+        <li>Public REST contract under <code>/api/v1</code>.</li>
+        <li>JSON-first CLI that runs from npm with Bun.</li>
+        <li>Agent skill for reading and syncing Daylo data from coding-agent workflows.</li>
+        <li>
+          Withings and Tanita Health Planet support verified on the hosted production service.
+        </li>
+      </ul>
+
+      <h2><span class="no">§ 03</span>Out of Scope for v0.1</h2>
+      <ul>
+        <li>Paid plans, credit-card collection, and billing flows.</li>
+        <li>Organization administration, dashboards, webhooks, and generic health coaching.</li>
+        <li>Medical diagnosis, treatment, weight-loss coaching, or emergency response.</li>
+      </ul>
+
+      <a class="legal-back" href="index.html">back to daylo</a>
+    </article>
+  </body>
+</html>

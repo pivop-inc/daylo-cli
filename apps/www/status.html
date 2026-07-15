@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Status - Daylo</title>
+    <meta
+      name="description"
+      content="Current Daylo v0.1 beta status for hosted API access, providers, pricing, CLI, and known limits."
+    />
+    <meta name="robots" content="index,follow" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d110f'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='38' fill='%23e8b04b' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <article class="legal">
+      <div class="legal-head">
+        <h1>Status</h1>
+        <p class="legal-meta">Last updated: July 15, 2026</p>
+        <p class="legal-meta">
+          This is a static beta-status page, not an automated uptime dashboard.
+        </p>
+        <p class="legal-lead">
+          Daylo v0.1 is available as a hosted API beta with open-source CLI, API spec, and agent
+          skill. Access is intentionally small while provider integrations and the developer
+          contract settle.
+        </p>
+        <nav class="trust-nav" aria-label="Trust pages">
+          <a href="security.html">security</a>
+          <a href="status.html">status</a>
+          <a href="changelog.html">changelog</a>
+          <a href="contact.html">contact</a>
+          <a href="index.html">home</a>
+        </nav>
+      </div>
+
+      <dl class="trust-kv">
+        <div>
+          <dt>Beta access</dt>
+          <dd>Invite-first. If no invite is available, join the waitlist or email us.</dd>
+        </div>
+        <div>
+          <dt>Pricing</dt>
+          <dd>Free beta. No card required.</dd>
+        </div>
+        <div>
+          <dt>Hosted API</dt>
+          <dd>Current public endpoint: <code>https://daylo.cc</code>.</dd>
+        </div>
+        <div>
+          <dt>Public repo</dt>
+          <dd>Open-source CLI, API spec, and agent skill live in <code>pivop-inc/daylo</code>.</dd>
+        </div>
+      </dl>
+
+      <h2><span class="no">§ 01</span>Provider Status</h2>
+      <ul>
+        <li>
+          <strong>Withings:</strong> OAuth connect, token refresh, sync, latest reading, and
+          normalization are verified end to end on the hosted production service.
+        </li>
+        <li>
+          <strong>Tanita Health Planet:</strong> OAuth connect, token exchange, sync, latest
+          reading, and InnerScan normalization are verified end to end on the hosted production
+          service.
+        </li>
+        <li>
+          <strong>Additional providers:</strong> not listed as supported until they pass the same
+          contract and production checks.
+        </li>
+      </ul>
+
+      <h2><span class="no">§ 02</span>Developer Surface</h2>
+      <ul>
+        <li>REST API under <code>/api/v1</code>, documented in the public spec.</li>
+        <li>JSON-first CLI for login, provider connect, sync, latest, list, and disconnect.</li>
+        <li>Agent skill for coding-agent sessions that need to sync or read weight data.</li>
+      </ul>
+
+      <h2><span class="no">§ 03</span>Known Limits</h2>
+      <ul>
+        <li>No SLA, paid plan, organization account, web dashboard, or webhook system in v0.1.</li>
+        <li>
+          Beta behavior, provider coverage, and API details can change before a stable release.
+        </li>
+        <li>
+          Provider-side outages, API-policy changes, consent-screen constraints, or account limits
+          can affect sync even when Daylo is healthy.
+        </li>
+      </ul>
+
+      <h2><span class="no">§ 04</span>Where to Check</h2>
+      <p>
+        For current access questions, provider requests, or issue reports, use the links on
+        <a href="contact.html">Contact</a>. For legal and data-handling details, read the
+        <a href="privacy-en.html">Privacy Policy</a> and <a href="terms-en.html">Terms</a>.
+      </p>
+
+      <a class="legal-back" href="index.html">back to daylo</a>
+    </article>
+  </body>
+</html>
