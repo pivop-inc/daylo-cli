@@ -93,16 +93,16 @@ type WeightMeasurement = {
 };
 ```
 
-| Method + path                                       | Returns                                                                                   |
-| --------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `GET /api/health`                                   | `{ "ok": true }` (no auth)                                                                |
-| `GET /api/v1/weight/latest`                         | `{ "latest": WeightMeasurement \| null }`                                                 |
-| `GET /api/v1/weight/list?days=30&provider=withings` | `{ "measurements": WeightMeasurement[] }` — `measuredAt` desc; `days` default 30, max 365 |
-| `POST /api/v1/sync`                                 | `{ "synced": { "withings": 3, "tanita": 0 } }`                                            |
-| `GET /api/v1/providers`                             | connection status per provider                                                            |
-| `POST /api/v1/providers/:provider/connect`          | `{ "authorizeUrl": "...", "state": "..." }` — begins OAuth                                |
-| `DELETE /api/v1/providers/:provider`                | disconnect, delete stored tokens                                                          |
-| `DELETE /api/v1/me/data`                            | delete all your measurements and provider tokens                                          |
+| Method + path                                       | Returns                                                                                                                                      |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GET /api/health`                                   | `{ "ok": true }` (no auth)                                                                                                                   |
+| `GET /api/v1/weight/latest`                         | `{ "latest": WeightMeasurement \| null }`                                                                                                    |
+| `GET /api/v1/weight/list?days=30&provider=withings` | `{ "measurements": WeightMeasurement[] }` — `measuredAt` desc; `days` default 30, max 365                                                    |
+| `POST /api/v1/sync`                                 | `{ "synced": { "withings": 3, "tanita": 0 } }`                                                                                               |
+| `GET /api/v1/providers`                             | connection status per provider                                                                                                               |
+| `POST /api/v1/providers/:provider/connect`          | `{ "authorizeUrl": "...", "state": "..." }` — begins OAuth                                                                                   |
+| `DELETE /api/v1/providers/:provider`                | disconnect, delete stored tokens                                                                                                             |
+| `DELETE /api/v1/me/data`                            | delete stored measurements and all stored provider tokens; account, auth data, and minimal legal acceptance records remain outside its scope |
 
 Every response includes an `X-Request-Id` header. Non-2xx responses share one error shape:
 
@@ -111,6 +111,16 @@ Every response includes an `X-Request-Id` header. Non-2xx responses share one er
 ```
 
 Signup/signin and API key issuance use [Better Auth](https://www.better-auth.com)'s standard endpoints mounted at `/api/auth/*`.
+
+## Data deletion and privacy
+
+`DELETE /api/v1/me/data` is the public measurement and connection data deletion endpoint. It deletes the authenticated user's stored measurements and all stored provider tokens. It does **not** delete the account, sessions, API keys, limited inquiry, security, and backup records, or minimal legal acceptance records that may be retained for a period reasonably necessary to verify contract formation and handle disputes. `daylo disconnect <provider>` deletes the stored tokens for only that provider.
+
+For account deletion, access, correction, suspension of use, or similar privacy requests, contact [hello@pivop.jp](mailto:hello@pivop.jp). Daylo verifies the request through the registered email address or another reasonable method and responds within a reasonable period.
+
+Data is retained only for periods appropriate to providing the service, security and incident response, legal requirements, external-service settings, and normal backup cycles. Information is deleted or made non-identifying when no longer needed. Backup records may remain until the normal rotation cycle completes; immediate individual deletion from backups is not promised.
+
+Daylo does not currently use measurement data to train AI models or sell it for advertising. If individually linked measurement data is used in the future for a new purpose such as AI training, sale, or third-party analytics, Daylo will consider a separate opt-in first. Without separate consent, that use will be limited to aggregated or anonymized information from which an individual cannot reasonably be reconstructed. See the [Privacy Policy](https://daylo.cc/privacy-en.html) for details; the [Japanese version](https://daylo.cc/privacy.html) controls.
 
 ## Providers
 

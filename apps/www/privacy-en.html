@@ -111,6 +111,10 @@
           The Service does not currently collect credit card information or other payment
           information.
         </li>
+        <li>
+          The Service has no dedicated fields for age or legal representative information and does
+          not collect that information as registration data.
+        </li>
         <li>We do not sell user measurement data for advertising purposes.</li>
         <li>We do not use user measurement data to train AI models.</li>
         <li>
@@ -122,6 +126,13 @@
           the user's device. We do not collect that file itself.
         </li>
       </ul>
+      <p>
+        If, in the future, we use measurement data linked to an individual for a new purpose such as
+        AI model training, sale, or third-party analytics, we will consider requesting a separate
+        opt-in before that use. If we use information for such purposes without separate consent,
+        our policy is to limit it to aggregated or anonymized information from which an individual
+        cannot reasonably be reconstructed.
+      </p>
 
       <h2><span class="no">§ 05</span>Purposes of Use</h2>
       <ul>
@@ -146,23 +157,36 @@
       <h2><span class="no">§ 06</span>Disclosure and External Services</h2>
       <p>
         We do not disclose personal information to third parties without user consent, except as
-        permitted by law. We use the following external services to the extent necessary to provide
-        the Service. Information may be processed or stored outside Japan.
+        permitted by law. External services and recipients related to the Service are classified as
+        follows. Information may be processed or stored outside Japan.
+      </p>
+
+      <h3>(1) Service Providers</h3>
+      <p>
+        We engage or use the following providers to process information to the extent necessary to
+        operate the Service.
       </p>
       <ul>
         <li>Cloudflare, Inc. (application runtime, CDN, security, request processing)</li>
         <li>Turso / libSQL (database)</li>
         <li>Google LLC (Google OAuth sign-in)</li>
         <li>Resend (email delivery such as magic links)</li>
-        <li>Withings (measurement data retrieval when connected by the user)</li>
-        <li>Tanita Health Planet (measurement data retrieval when connected by the user)</li>
         <li>GitHub, Inc. (when the user joins a waitlist or contacts us through GitHub Issues)</li>
         <li>Google Workspace (receiving, sending, and storing inquiry emails)</li>
       </ul>
+
+      <h3>(2) Providers Connected by the User</h3>
       <p>
-        When a user connects a provider such as Withings or Tanita Health Planet, we communicate
-        with that provider's API based on the user's authorization. The provider's own terms of
-        service and privacy policy apply to that provider's handling of information.
+        When a user chooses to connect a provider such as Withings or Tanita Health Planet, we
+        communicate with that provider's API based on the user's authorization. The provider's own
+        terms of service and privacy policy apply to that provider's handling of information.
+      </p>
+
+      <h3>(3) Disclosure Required or Permitted by Law</h3>
+      <p>
+        We may disclose information to the extent permitted by law when required by law, when
+        necessary to protect a person's life, body, or property and obtaining consent is difficult,
+        or in response to a lawful request from a court, regulator, or other public authority.
       </p>
 
       <h2><span class="no">§ 07</span>Security Measures</h2>
@@ -192,22 +216,36 @@
       <h2><span class="no">§ 08</span>Retention</h2>
       <ul>
         <li>
-          We retain account information, measurement data, and provider connection information until
-          the user deletes it or for as long as necessary to provide the Service.
+          We retain account information, sessions, and API keys while the account remains active or
+          for as long as necessary for authentication, security, and provision of the Service.
         </li>
         <li>
-          Provider tokens are retained until the user runs
-          <code>daylo disconnect &lt;provider&gt;</code> or deletes all data.
+          We retain measurement data and provider tokens while necessary to provide the Service or
+          until the user deletes the relevant data through
+          <code>daylo disconnect &lt;provider&gt;</code> or <code>DELETE /api/v1/me/data</code>.
         </li>
         <li>
-          Technical logs are deleted or anonymized within 90 days in principle. We may retain them
-          longer when necessary for abuse investigations, security response, or legal compliance.
+          We retain technical logs, inquiry records, and security response records for periods
+          appropriate to their purposes, including abuse, incident, and security response and legal
+          requirements.
         </li>
         <li>
-          Inquiry records may be retained after the response is complete to the extent necessary for
-          follow-up inquiries or dispute handling.
+          Legal acceptance records are limited to the user ID, Terms version, Policy version,
+          acceptance timestamp, and source. We may retain them for a period reasonably necessary to
+          verify contract formation and handle disputes, and delete them when no longer needed.
+        </li>
+        <li>
+          Information in external services may remain according to each service's settings and
+          ordinary deletion cycle. Information in backups may remain until the normal rotation cycle
+          is complete, and we do not promise immediate individual deletion from backups. Access to
+          backups is limited to what is necessary.
         </li>
       </ul>
+      <p>
+        When information is no longer necessary for its purpose, we delete it or put it into a form
+        that does not identify individuals in accordance with ordinary operational and backup
+        cycles.
+      </p>
 
       <h2><span class="no">§ 09</span>Deletion, Access, and Correction</h2>
       <p>Users can delete data or disconnect providers as follows.</p>
@@ -217,8 +255,9 @@
           <code>daylo disconnect &lt;provider&gt;</code> (deletes stored tokens for that provider)
         </li>
         <li>
-          Delete all data:
-          <code>DELETE /api/v1/me/data</code> (deletes measurement data and provider tokens)
+          Delete measurement and connection data:
+          <code>DELETE /api/v1/me/data</code> (deletes measurement data and all stored provider
+          tokens)
         </li>
         <li>
           Account deletion, access, correction, suspension of use, or suspension of third-party
@@ -226,9 +265,19 @@
         </li>
       </ul>
       <p>
-        We will verify your identity and respond within a reasonable period in accordance with
-        applicable law. If we cannot delete certain information for legal or security reasons, we
-        will explain the reason.
+        <code>DELETE /api/v1/me/data</code> does not delete the account, sessions, API keys, or
+        limited inquiry, security, or backup records, or the minimal legal acceptance records
+        described above. Account deletion is handled separately through the contact above. Even
+        after measurement and connection data deletion or account deletion, minimal legal acceptance
+        records may remain for a period reasonably necessary to verify contract formation and handle
+        disputes, and are deleted when no longer needed.
+      </p>
+      <p>
+        We will verify identity using the registered email address or another reasonable method and
+        respond within a reasonable period in accordance with applicable law. We will not require
+        excessive identity verification that effectively prevents a request. If information cannot
+        be deleted immediately for legal or security reasons, or remains in backups until the normal
+        rotation cycle, we will explain the reason or how it is handled.
       </p>
 
       <h2><span class="no">§ 10</span>Cookies and Similar Technologies</h2>
@@ -250,8 +299,9 @@
       <h2><span class="no">§ 12</span>Changes to This Policy</h2>
       <p>
         We may revise this Policy in response to legal changes, changes to external services, or
-        changes to the Service. For material changes, we will notify users by posting on the
-        Service, email, or another appropriate method.
+        changes to the Service. We will post the content of the changes and the effective date on
+        the Service. For material changes, we will provide reasonable advance notice before the
+        effective date by email or another appropriate method.
       </p>
 
       <h2><span class="no">§ 13</span>Contact</h2>

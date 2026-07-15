@@ -68,8 +68,12 @@
         availability, backward compatibility, or support response times.
       </p>
 
-      <h2><span class="no">§ 04</span>Accounts and API Keys</h2>
+      <h2><span class="no">§ 04</span>Eligibility, Accounts, and API Keys</h2>
       <ul>
+        <li>
+          Users under 18 must obtain consent from their legal representative before using the
+          Service.
+        </li>
         <li>
           Users sign in by the methods we specify, such as Google account sign-in, magic links, or
           device authorization, and use the Service by issuing API keys.
@@ -148,15 +152,41 @@
       <p>
         Users can disconnect a provider and delete stored tokens by running
         <code>daylo disconnect &lt;provider&gt;</code>. Users can also request deletion of
-        measurement data and provider tokens stored in the Service by calling
-        <code>DELETE /api/v1/me/data</code>.
+        measurement data and all stored provider tokens by calling
+        <code>DELETE /api/v1/me/data</code>. This endpoint deletes measurement and connection data;
+        it does not delete the account, sessions, API keys, limited inquiry, security, or backup
+        records, or minimal legal acceptance records retained for a period reasonably necessary to
+        verify contract formation and handle disputes.
       </p>
       <p>
         For account deletion, access to retained personal data, correction, suspension of use, or
-        similar requests, contact the privacy contact described in the Privacy Policy.
+        similar requests, contact <a href="mailto:hello@pivop.jp">hello@pivop.jp</a>. Further
+        details are provided in the Privacy Policy.
+      </p>
+      <p>
+        The Privacy Policy describes data retention, backups, and current and future uses of
+        measurement data.
       </p>
 
-      <h2><span class="no">§ 09</span>Intellectual Property and Licenses</h2>
+      <h2><span class="no">§ 09</span>User Data Rights and Limited License</h2>
+      <p>
+        Rights in measurement data and other user data that users store in or retrieve through the
+        Service remain with the user or the relevant rights holder. These Terms do not transfer
+        ownership of that data to us.
+      </p>
+      <p>
+        Users grant us a non-exclusive, royalty-free, and limited license to store, copy, transmit,
+        transform, and otherwise technically process user data only as necessary to provide,
+        maintain, and secure the Service and respond to inquiries. We will not use this license for
+        other purposes, except that we may have service providers process data to the extent
+        necessary for those purposes.
+      </p>
+      <p>
+        This license lasts only for as long as necessary for those purposes, including retention in
+        accordance with the Privacy Policy.
+      </p>
+
+      <h2><span class="no">§ 10</span>Intellectual Property and Licenses</h2>
       <p>
         Rights in software, documents, designs, names, logos, and other content related to the
         Service belong to us or their rightful owners.
@@ -168,7 +198,7 @@
         third-party services.
       </p>
 
-      <h2><span class="no">§ 10</span>Self-Hosting and Compatible Deployments</h2>
+      <h2><span class="no">§ 11</span>Self-Hosting and Compatible Deployments</h2>
       <p>
         Users may operate Daylo-compatible deployments using public code or compatible
         implementations at their own responsibility. In that case, the operator of that deployment
@@ -177,55 +207,73 @@
         provide.
       </p>
 
-      <h2><span class="no">§ 11</span>Changes, Suspension, and Termination</h2>
+      <h2><span class="no">§ 12</span>Changes, Suspension, Restriction, and Termination</h2>
       <p>
         We may change, suspend, or terminate all or part of the Service without prior notice to
         users. For material changes, we will make reasonable efforts to notify users by posting on
         the Service, email, GitHub, or another appropriate method.
       </p>
+      <p>
+        We may restrict the use of an account, API key, or provider connection to the extent
+        necessary if the user violates these Terms, threatens the security of other users or the
+        Service, if required by law, or if Service operations are materially disrupted. Except in
+        urgent cases, we will provide notice of the reason and an opportunity to cure where
+        reasonably possible.
+      </p>
+      <p>
+        We may terminate access to the Service if there is a material violation, a violation is not
+        cured within a reasonable period after notice, violations are repeated, or there is fraud,
+        unlawful conduct, or a serious security risk. We will notify the user of the reason where
+        reasonably possible.
+      </p>
 
-      <h2><span class="no">§ 12</span>Disclaimer of Warranties</h2>
+      <h2><span class="no">§ 13</span>Disclaimer of Warranties</h2>
       <p>
         The Service is provided as is. We do not warrant safety, accuracy, completeness, continuity,
         fitness for a particular purpose, continuing compatibility with provider APIs, complete
         retrieval, storage, or restoration of data, or that the Service will be error-free or
         outage-free.
       </p>
+      <p>This section applies only to the extent permitted by law.</p>
 
-      <h2><span class="no">§ 13</span>Limitation of Liability</h2>
+      <h2><span class="no">§ 14</span>Limitation of Liability</h2>
       <p>
-        We are not liable for damage suffered by users arising from or related to the Service,
-        except in cases of our willful misconduct or gross negligence. Even where we are liable, our
-        liability is limited to actual, ordinary, and direct damages, and the total amount of our
-        liability is capped at JPY 10,000. This does not apply where limitation of liability is not
-        permitted by law.
+        The exclusions and liability cap in this section do not apply to liability arising from our
+        willful misconduct or gross negligence, or to liability that cannot be excluded or limited
+        under the Consumer Contract Act or other applicable law. In all other cases where we are
+        liable, liability is limited to actual, ordinary, and direct damages, and our total
+        liability is capped at JPY 10,000.
       </p>
       <p>
-        We are not liable for lost profits, lost business opportunities, data loss, substitute
-        service costs, indirect damages, special damages, or consequential damages.
+        Except in the cases excluded from the limitation above, we are not liable for lost profits,
+        lost business opportunities, data loss, substitute service costs, indirect damages, special
+        damages, or consequential damages.
       </p>
 
-      <h2><span class="no">§ 14</span>User Indemnity</h2>
+      <h2><span class="no">§ 15</span>User Indemnity</h2>
       <p>
-        If we incur damage, claims, or costs because a user violates these Terms, infringes
-        third-party rights, or improperly uses the user's account, API key, or provider connection,
-        the user must indemnify us.
+        If we incur loss or expense because of a user's intentional or negligent violation of these
+        Terms, infringement of third-party rights, or improper use of the user's account, API key,
+        or provider connection, the user must indemnify us only for reasonable, ordinary, and direct
+        loss and expense resulting from that conduct. This does not apply where the cause is not
+        attributable to the user.
       </p>
 
-      <h2><span class="no">§ 15</span>Changes to These Terms</h2>
+      <h2><span class="no">§ 16</span>Changes to These Terms</h2>
       <p>
-        We may change these Terms in response to legal changes, Service changes, or operational
-        needs. Revised Terms take effect when posted on the Service or at another time specified by
-        us. We will notify users of material changes by a reasonable method.
+        We may change these Terms where reasonable in light of legal changes, Service changes,
+        operational needs, or other circumstances. We will post the content of the changes and the
+        effective date on the Service. For material changes, we will provide reasonable advance
+        notice before the effective date by email, GitHub, or another appropriate method.
       </p>
 
-      <h2><span class="no">§ 16</span>Governing Law and Jurisdiction</h2>
+      <h2><span class="no">§ 17</span>Governing Law and Jurisdiction</h2>
       <p>
         These Terms are governed by the laws of Japan. The Tokyo District Court has exclusive
         jurisdiction as the court of first instance over disputes related to the Service.
       </p>
 
-      <h2><span class="no">§ 17</span>Contact and Operator Information</h2>
+      <h2><span class="no">§ 18</span>Contact and Operator Information</h2>
       <ul>
         <li>Operator: pivop Inc. / 株式会社pivop</li>
         <li>
