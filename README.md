@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/@pivop/daylo.svg)](https://www.npmjs.com/package/@pivop/daylo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[Website](https://daylo.cc) · [npm](https://www.npmjs.com/package/@pivop/daylo) · [API spec](docs/spec.md)
+[Website](https://daylo.cc) · [Status](https://daylo.cc/status) · [npm](https://www.npmjs.com/package/@pivop/daylo) · [API spec](docs/spec.md)
 
 **One API for every smart scale.**
 

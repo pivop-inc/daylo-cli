@@ -26,13 +26,11 @@
       <div class="legal-head">
         <h1>Status</h1>
         <p class="legal-meta">Last updated: July 15, 2026</p>
-        <p class="legal-meta">
-          This is a static beta-status page, not an automated uptime dashboard.
-        </p>
         <p class="legal-lead">
           Daylo v0.1 is available as a hosted API beta with open-source CLI, API spec, and agent
-          skill. Access is intentionally small while provider integrations and the developer
-          contract settle.
+          skill. Live operational status is being connected through Better Stack at
+          <a href="https://status.daylo.cc">status.daylo.cc</a>; this page keeps the beta scope,
+          provider status, and fallback checks in one place.
         </p>
         <nav class="trust-nav" aria-label="Trust pages">
           <a href="security.html">security</a>
@@ -45,24 +43,43 @@
 
       <dl class="trust-kv">
         <div>
+          <dt>Live status</dt>
+          <dd><a href="https://status.daylo.cc">status.daylo.cc</a> via Better Stack.</dd>
+        </div>
+        <div>
+          <dt>Health check</dt>
+          <dd>
+            <a href="/api/health"><code>GET /api/health</code></a> returns <code>{"ok":true}</code>.
+          </dd>
+        </div>
+        <div>
+          <dt>Status JSON</dt>
+          <dd>
+            <a href="https://status.daylo.cc/index.json"><code>/index.json</code></a> once the
+            Better Stack page is live.
+          </dd>
+        </div>
+        <div>
           <dt>Beta access</dt>
-          <dd>Invite-first. If no invite is available, join the waitlist or email us.</dd>
-        </div>
-        <div>
-          <dt>Pricing</dt>
-          <dd>Free beta. No card required.</dd>
-        </div>
-        <div>
-          <dt>Hosted API</dt>
-          <dd>Current public endpoint: <code>https://daylo.cc</code>.</dd>
-        </div>
-        <div>
-          <dt>Public repo</dt>
-          <dd>Open-source CLI, API spec, and agent skill live in <code>pivop-inc/daylo</code>.</dd>
+          <dd>Free beta. No card required. Invite-first while the API settles.</dd>
         </div>
       </dl>
 
-      <h2><span class="no">§ 01</span>Provider Status</h2>
+      <h2><span class="no">§ 01</span>Live Operations Status</h2>
+      <div class="status-panel">
+        <div>
+          <span class="status status-pending">connecting</span>
+          <p>
+            Better Stack will monitor the hosted API health endpoint and homepage from
+            <a href="https://status.daylo.cc">status.daylo.cc</a>. Until the custom domain and
+            Better Stack page are connected, use <a href="/api/health"><code>/api/health</code></a>
+            and the contact links below for current operational questions.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/api/health">Check API health</a>
+      </div>
+
+      <h2><span class="no">§ 02</span>Provider Status</h2>
       <ul>
         <li>
           <strong>Withings:</strong> OAuth connect, token refresh, sync, latest reading, and
@@ -79,14 +96,14 @@
         </li>
       </ul>
 
-      <h2><span class="no">§ 02</span>Developer Surface</h2>
+      <h2><span class="no">§ 03</span>Developer Surface</h2>
       <ul>
         <li>REST API under <code>/api/v1</code>, documented in the public spec.</li>
         <li>JSON-first CLI for login, provider connect, sync, latest, list, and disconnect.</li>
         <li>Agent skill for coding-agent sessions that need to sync or read weight data.</li>
       </ul>
 
-      <h2><span class="no">§ 03</span>Known Limits</h2>
+      <h2><span class="no">§ 04</span>Known Limits</h2>
       <ul>
         <li>No SLA, paid plan, organization account, web dashboard, or webhook system in v0.1.</li>
         <li>
@@ -98,9 +115,10 @@
         </li>
       </ul>
 
-      <h2><span class="no">§ 04</span>Where to Check</h2>
+      <h2><span class="no">§ 05</span>Where to Check</h2>
       <p>
-        For current access questions, provider requests, or issue reports, use the links on
+        Use <a href="https://status.daylo.cc">status.daylo.cc</a> for the operations page once it is
+        live. For current access questions, provider requests, or issue reports, use the links on
         <a href="contact.html">Contact</a>. For legal and data-handling details, read the
         <a href="privacy-en.html">Privacy Policy</a> and <a href="terms-en.html">Terms</a>.
       </p>

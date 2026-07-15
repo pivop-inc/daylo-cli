@@ -1300,10 +1300,33 @@ section {
   color: var(--muted);
   padding: 0.35rem 0 0.35rem 1rem;
 }
+.legal .status-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 1rem 1.1rem;
+  margin: 1rem 0 1.5rem;
+}
+.legal .status-panel p {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+}
+.legal .status-panel .btn {
+  flex: 0 0 auto;
+}
 @media (max-width: 680px) {
   .legal .trust-grid,
-  .legal .trust-kv div {
+  .legal .trust-kv div,
+  .legal .status-panel {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .legal .status-panel {
+    display: grid;
+    align-items: stretch;
   }
   .legal .trust-kv div {
     gap: 0.25rem;
