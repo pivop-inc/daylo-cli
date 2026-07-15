@@ -1,7 +1,7 @@
 blank_issues_enabled: true
 contact_links:
   - name: API contract
-    url: https://github.com/pivop-inc/daylo/blob/main/docs/spec.md
+    url: https://github.com/pivop-inc/daylo-cli/blob/main/docs/spec.md
     about: Read the v1 REST API and CLI contract before filing integration questions.
   - name: daylo.cc
     url: https://daylo.cc

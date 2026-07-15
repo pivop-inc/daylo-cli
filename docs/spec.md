@@ -81,7 +81,7 @@ JSON-first: stdout is machine-parseable JSON by default — AI agents are the pr
 - `daylo latest [--pretty]` → the `latest` object (or `null`)
 - `daylo list [--days 30] [--provider withings|tanita] [--pretty]` → the `measurements` array
 
-Install path for v1 is `bunx @pivop/daylo`. `bunx github:pivop-inc/daylo` remains a source fallback during npm release windows. The CLI runs directly on Bun.
+Install path for v1 is `bunx daylo-cli`. The CLI runs directly on Bun.
 
 ## Verification (applies to every workspace)
 

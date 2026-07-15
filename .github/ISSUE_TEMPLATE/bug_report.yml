@@ -56,7 +56,7 @@ body:
       placeholder: |
         macOS 15.x
         bun 1.x
-        bunx @pivop/daylo
+        bunx daylo-cli
         Provider: Withings
     validations:
       required: true

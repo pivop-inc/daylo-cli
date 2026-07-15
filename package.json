@@ -1,5 +1,5 @@
 {
-  "name": "@pivop/daylo",
+  "name": "daylo-cli",
   "version": "0.1.0",
   "description": "JSON-first Bun CLI for the Daylo smart-scale API.",
   "keywords": [
@@ -13,12 +13,12 @@
   ],
   "homepage": "https://daylo.cc",
   "bugs": {
-    "url": "https://github.com/pivop-inc/daylo/issues"
+    "url": "https://github.com/pivop-inc/daylo-cli/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pivop-inc/daylo.git"
+    "url": "git+https://github.com/pivop-inc/daylo-cli.git"
   },
   "bin": {
     "daylo": "apps/cli/bin/daylo.ts"

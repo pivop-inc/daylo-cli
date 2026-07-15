@@ -1,4 +1,4 @@
-# @pivop/daylo (CLI)
+# daylo-cli (CLI)
 
 One API for every smart scale — `daylo` is the JSON-first command line client.
 stdout is machine-parseable JSON by default (AI agents are the primary consumer);
@@ -12,15 +12,8 @@ Zero runtime dependencies — it runs directly on Bun's built-ins.
 The official npm package runs with Bun:
 
 ```sh
-alias daylo="bunx @pivop/daylo"
+alias daylo="bunx daylo-cli"
 daylo latest
-```
-
-If the npm package is not available during a release window, run the same CLI
-from GitHub:
-
-```sh
-alias daylo="bunx github:pivop-inc/daylo"
 ```
 
 ## Run it from the repo

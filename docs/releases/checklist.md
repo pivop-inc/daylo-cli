@@ -22,7 +22,7 @@ Use this checklist before publishing a public release. Keep release creation and
 ## Release Notes
 
 - [ ] Draft notes exist under `docs/releases/`.
-- [ ] Install instructions say `bunx @pivop/daylo`.
+- [ ] Install instructions say `bunx daylo-cli`.
 - [ ] Notes do not claim npm is published until the npm publish gate is complete.
 - [ ] Provider status distinguishes implemented support from production-verified support.
 
@@ -31,4 +31,4 @@ Use this checklist before publishing a public release. Keep release creation and
 - [ ] Confirm the version and tag name.
 - [ ] Confirm no secrets or private health data are present in examples, logs, or screenshots.
 - [ ] Create the GitHub release only after final approval.
-- [ ] Publish `@pivop/daylo` to npm only after final approval.
+- [ ] Publish `daylo-cli` to npm only after final approval.

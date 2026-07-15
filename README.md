@@ -1,10 +1,10 @@
 # Daylo
 
-[![CI](https://github.com/pivop-inc/daylo/actions/workflows/ci.yml/badge.svg)](https://github.com/pivop-inc/daylo/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@pivop/daylo.svg)](https://www.npmjs.com/package/@pivop/daylo)
+[![CI](https://github.com/pivop-inc/daylo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/pivop-inc/daylo-cli/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/daylo-cli.svg)](https://www.npmjs.com/package/daylo-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[Website](https://daylo.cc) · [Status](https://daylo.cc/status) · [npm](https://www.npmjs.com/package/@pivop/daylo) · [API spec](docs/spec.md)
+[Website](https://daylo.cc) · [Status](https://daylo.cc/status) · [npm](https://www.npmjs.com/package/daylo-cli) · [API spec](docs/spec.md)
 
 **One API for every smart scale.**
 
@@ -17,19 +17,12 @@ Every vendor has its own OAuth flow, date format, and payload shape. Daylo hides
 Runs straight from npm with [Bun](https://bun.sh):
 
 ```sh
-alias daylo="bunx @pivop/daylo"
+alias daylo="bunx daylo-cli"
 
 daylo login              # opens your browser to sign in, creates an API key
 daylo connect withings   # opens your browser for OAuth, waits until connected
 daylo sync               # pull your measurements from the provider
 daylo latest             # your most recent weight, as JSON
-```
-
-If the npm package is not available during a release window, run the same CLI
-from GitHub:
-
-```sh
-alias daylo="bunx github:pivop-inc/daylo"
 ```
 
 ```json
@@ -67,12 +60,12 @@ This repo ships a skill ([`skills/daylo/SKILL.md`](skills/daylo/SKILL.md)) that 
 # Claude Code
 mkdir -p ~/.claude/skills/daylo
 curl -fsSL -o ~/.claude/skills/daylo/SKILL.md \
-  https://raw.githubusercontent.com/pivop-inc/daylo/main/skills/daylo/SKILL.md
+  https://raw.githubusercontent.com/pivop-inc/daylo-cli/main/skills/daylo/SKILL.md
 
 # Codex
 mkdir -p ~/.codex/skills/daylo
 curl -fsSL -o ~/.codex/skills/daylo/SKILL.md \
-  https://raw.githubusercontent.com/pivop-inc/daylo/main/skills/daylo/SKILL.md
+  https://raw.githubusercontent.com/pivop-inc/daylo-cli/main/skills/daylo/SKILL.md
 ```
 
 Then just ask, e.g. "What was my weight trend this month?" or "Sync my scale and show the latest reading."
