@@ -17,7 +17,7 @@ Commands:
   list [--days 30] [--provider withings|tanita] [--pretty]
 
 Options:
-  --api-url <url>   Override the API base URL (also: DAYLO_API_URL env)
+  --api-url <url>   Select API base URL (also: DAYLO_API_URL; keys stay origin-bound)
   --pretty          Human-readable output (default output is JSON on stdout)
   --help, -h        Show this help
 

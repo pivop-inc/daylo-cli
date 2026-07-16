@@ -1,6 +1,6 @@
 {
   "name": "daylo-cli-internal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Internal CLI workspace for the daylo-cli Bun package.",
   "homepage": "https://daylo.cc",

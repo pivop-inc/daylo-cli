@@ -57,4 +57,4 @@ Errors print to stderr as `{ "error": { "code", "message" } }`. Exit codes: 0 su
 
 ## Self-hosted backends
 
-To point the CLI at a self-hosted backend, set the `DAYLO_API_URL` env var or pass `--api-url <url>` on any command.
+To point the CLI at a self-hosted backend, run `bunx daylo-cli login --api-url https://example.com` or set `DAYLO_API_URL` for the login. The saved API key is bound to that origin and authenticated commands refuse to send it to a different scheme, host, or port. External backends must use HTTPS; HTTP is accepted only for localhost loopback testing.

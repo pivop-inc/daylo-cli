@@ -1,33 +1,46 @@
 import { describe, expect, test } from "bun:test";
-import { requireApiKey, resolveApiUrl, toApiError } from "../../src/api.ts";
+import { assertApiKeyOrigin, requireApiKey, resolveApiUrl, toApiError } from "../../src/api.ts";
 import { CliError } from "../../src/errors.ts";
+
+function expectCliError(fn: () => unknown, code: string): void {
+  try {
+    fn();
+    throw new Error("should have thrown");
+  } catch (error) {
+    expect(error).toBeInstanceOf(CliError);
+    expect((error as CliError).code).toBe(code);
+    expect((error as CliError).exitCode).toBe(1);
+  }
+}
 
 describe("resolveApiUrl", () => {
   test("prefers the flag over env and config", () => {
     const url = resolveApiUrl(
-      "http://flag",
-      { apiUrl: "http://config" },
-      { DAYLO_API_URL: "http://env" },
+      "https://flag.example",
+      { apiUrl: "https://config.example" },
+      { DAYLO_API_URL: "https://env.example" },
     );
-    expect(url).toBe("http://flag");
+    expect(url).toBe("https://flag.example");
   });
 
   test("prefers env over config", () => {
     const url = resolveApiUrl(
       undefined,
-      { apiUrl: "http://config" },
-      { DAYLO_API_URL: "http://env" },
+      { apiUrl: "https://config.example" },
+      { DAYLO_API_URL: "https://env.example" },
     );
-    expect(url).toBe("http://env");
+    expect(url).toBe("https://env.example");
   });
 
   test("falls back to config", () => {
-    expect(resolveApiUrl(undefined, { apiUrl: "http://config" }, {})).toBe("http://config");
+    expect(resolveApiUrl(undefined, { apiUrl: "https://config.example" }, {})).toBe(
+      "https://config.example",
+    );
   });
 
   test("strips trailing slashes", () => {
-    expect(resolveApiUrl("http://x/", {}, {})).toBe("http://x");
-    expect(resolveApiUrl("http://x///", {}, {})).toBe("http://x");
+    expect(resolveApiUrl("https://x.example/", {}, {})).toBe("https://x.example");
+    expect(resolveApiUrl("https://x.example///", {}, {})).toBe("https://x.example");
   });
 
   test("falls back to the default hosted API when nothing is configured", () => {
@@ -35,7 +48,23 @@ describe("resolveApiUrl", () => {
   });
 
   test("throws when the resolved URL is empty", () => {
-    expect(() => resolveApiUrl("", {}, {})).toThrow(CliError);
+    expectCliError(() => resolveApiUrl("", {}, {}), "api_url_missing");
+  });
+
+  test("allows HTTPS and loopback HTTP", () => {
+    expect(resolveApiUrl("https://api.example", {}, {})).toBe("https://api.example");
+    expect(resolveApiUrl("http://localhost:8787", {}, {})).toBe("http://localhost:8787");
+    expect(resolveApiUrl("http://127.0.0.1:8787", {}, {})).toBe("http://127.0.0.1:8787");
+    expect(resolveApiUrl("http://[::1]:8787", {}, {})).toBe("http://[::1]:8787");
+  });
+
+  test("rejects malformed and unsupported URLs", () => {
+    expectCliError(() => resolveApiUrl("not-a-url", {}, {}), "api_url_invalid");
+    expectCliError(() => resolveApiUrl("ftp://api.example", {}, {}), "api_url_invalid");
+  });
+
+  test("rejects non-loopback HTTP", () => {
+    expectCliError(() => resolveApiUrl("http://api.example", {}, {}), "api_url_insecure");
   });
 });
 
@@ -53,6 +82,44 @@ describe("requireApiKey", () => {
       expect((error as CliError).code).toBe("not_logged_in");
       expect((error as CliError).exitCode).toBe(1);
     }
+  });
+});
+
+describe("assertApiKeyOrigin", () => {
+  test("allows an authenticated request to the saved origin", () => {
+    expect(() =>
+      assertApiKeyOrigin("https://api.example/v2", {
+        apiUrl: "https://api.example/v1",
+        apiKey: "k",
+      }),
+    ).not.toThrow();
+  });
+
+  test("rejects a different host, scheme, or port", () => {
+    const config = { apiUrl: "https://api.example", apiKey: "k" };
+    expectCliError(
+      () => assertApiKeyOrigin("https://attacker.example", config),
+      "api_origin_mismatch",
+    );
+    expectCliError(
+      () => assertApiKeyOrigin("http://localhost", { apiUrl: "https://localhost", apiKey: "k" }),
+      "api_origin_mismatch",
+    );
+    expectCliError(
+      () =>
+        assertApiKeyOrigin("http://127.0.0.1:8788", {
+          apiUrl: "http://127.0.0.1:8787",
+          apiKey: "k",
+        }),
+      "api_origin_mismatch",
+    );
+  });
+
+  test("fails closed when a stored key has no saved API URL", () => {
+    expectCliError(
+      () => assertApiKeyOrigin("https://daylo.cc", { apiKey: "k" }),
+      "api_key_origin_missing",
+    );
   });
 });
 

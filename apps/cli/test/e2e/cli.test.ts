@@ -36,6 +36,10 @@ const mockTest = usingMock ? test : test.skip;
 const injectedApiKey = process.env["DAYLO_E2E_API_KEY"];
 
 let server: MockServer | undefined;
+let captureServer: ReturnType<typeof Bun.serve> | undefined;
+let captureUrl: string;
+let captureRequests = 0;
+let captureAuthorizationHeaders: Array<string | null> = [];
 let apiUrl: string;
 let authed: { dir: string; cleanup: () => void };
 
@@ -56,6 +60,16 @@ function assertMeasurementShape(m: unknown): asserts m is WeightMeasurement {
 }
 
 beforeAll(async () => {
+  captureServer = Bun.serve({
+    hostname: "127.0.0.1",
+    port: 0,
+    fetch(request) {
+      captureRequests += 1;
+      captureAuthorizationHeaders.push(request.headers.get("authorization"));
+      return new Response("ok");
+    },
+  });
+  captureUrl = captureServer.url.origin;
   if (usingMock) {
     server = createMockServer({ connectAutoCompleteMs: 120 });
     apiUrl = server.url;
@@ -80,6 +94,7 @@ beforeAll(async () => {
 
 afterAll(() => {
   server?.stop();
+  captureServer?.stop(true);
   authed?.cleanup();
 });
 
@@ -193,6 +208,31 @@ describe("connect / disconnect (mock only — real OAuth needs a human)", () => 
 });
 
 describe("errors and usage", () => {
+  mockTest("--api-url cannot forward the stored key to another origin", async () => {
+    captureRequests = 0;
+    captureAuthorizationHeaders = [];
+    const res = await runCli(["latest", "--api-url", captureUrl], { env: authedEnv() });
+    expect(res.code).toBe(1);
+    expect(res.stdout).toBe("");
+    const err = JSON.parse(res.stderr.trim()) as { error: { code: string } };
+    expect(err.error.code).toBe("api_origin_mismatch");
+    expect(captureRequests).toBe(0);
+    expect(captureAuthorizationHeaders).toEqual([]);
+  });
+
+  mockTest("DAYLO_API_URL cannot forward the stored key to another origin", async () => {
+    captureRequests = 0;
+    captureAuthorizationHeaders = [];
+    const res = await runCli(["latest"], {
+      env: authedEnv({ DAYLO_API_URL: captureUrl }),
+    });
+    expect(res.code).toBe(1);
+    const err = JSON.parse(res.stderr.trim()) as { error: { code: string } };
+    expect(err.error.code).toBe("api_origin_mismatch");
+    expect(captureRequests).toBe(0);
+    expect(captureAuthorizationHeaders).toEqual([]);
+  });
+
   test("not logged in → exit 1 with JSON error on stderr", async () => {
     const fresh = makeConfigDir();
     try {

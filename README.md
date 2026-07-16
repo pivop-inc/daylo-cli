@@ -50,7 +50,7 @@ stdout is machine-parseable JSON by default — AI agents are the primary consum
 - `daylo latest [--pretty]`
 - `daylo list [--days 30] [--provider withings|tanita] [--pretty]`
 
-Config lives at `~/.config/daylo/config.json` (mode 600). `DAYLO_API_URL` or `--api-url` overrides the API endpoint (useful when pointing at a compatible API implementation).
+Config lives at `~/.config/daylo/config.json` (mode 600). To use a compatible API implementation, select it during login with `daylo login --api-url https://example.com` or `DAYLO_API_URL`. The saved API key is bound to that login origin and is never sent to a different scheme, host, or port. External endpoints must use HTTPS; HTTP is accepted only for localhost loopback testing.
 
 ## Use with AI agents
 

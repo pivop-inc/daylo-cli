@@ -41,13 +41,17 @@ Commands (see `docs/spec.md` for the contract):
   newest first.
 
 Global options: `--api-url <url>` (also `DAYLO_API_URL`), `--pretty`, `--help`.
+Saved API keys are bound to the origin used by `daylo login` and are never sent
+to a different scheme, host, or port.
 
 ### Configuration
 
 Config lives at `~/.config/daylo/config.json` (mode `600`) holding
 `{ apiUrl, apiKey }`. Override the location with `DAYLO_CONFIG_DIR` (used by the
 tests so they never touch your real config). The API base URL resolves in order:
-`--api-url` flag → `DAYLO_API_URL` env → saved config.
+`--api-url` flag → `DAYLO_API_URL` env → saved config. Authenticated commands may
+override only within the saved login origin. External endpoints must use HTTPS;
+HTTP is accepted only for `localhost`, `127.0.0.1`, and `[::1]` testing.
 
 Other env knobs: `DAYLO_NO_BROWSER=1` suppresses browser launch (headless / CI);
 `DAYLO_LOGIN_POLL_INTERVAL_MS` and `DAYLO_LOGIN_TIMEOUT_MS` tune the login device-flow
@@ -63,6 +67,9 @@ export DAYLO_API_URL=https://example.com
 bun bin/daylo.ts login
 bun bin/daylo.ts latest
 ```
+
+Login saves both the custom API URL and the key issued by that origin. To switch
+origins, run `daylo login` against the new URL instead of reusing an existing key.
 
 ## Tests
 

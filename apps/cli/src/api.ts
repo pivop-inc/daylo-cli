@@ -9,6 +9,26 @@ export type ApiContext = {
 
 /** Default hosted API endpoint, used when no flag, env, or config value is set. */
 const DEFAULT_API_URL = "https://daylo.cc";
+const LOOPBACK_HOSTNAMES = new Set(["localhost", "127.0.0.1", "[::1]"]);
+
+function parseApiUrl(value: string): URL {
+  let parsed: URL;
+  try {
+    parsed = new URL(value);
+  } catch {
+    throw new CliError("api_url_invalid", "API URL must be an absolute HTTP(S) URL.");
+  }
+  if (parsed.protocol !== "https:" && parsed.protocol !== "http:") {
+    throw new CliError("api_url_invalid", "API URL must use the http or https scheme.");
+  }
+  if (parsed.protocol === "http:" && !LOOPBACK_HOSTNAMES.has(parsed.hostname.toLowerCase())) {
+    throw new CliError(
+      "api_url_insecure",
+      "API URL must use HTTPS unless it is localhost, 127.0.0.1, or [::1].",
+    );
+  }
+  return parsed;
+}
 
 export function resolveApiUrl(
   flagValue: string | undefined,
@@ -22,7 +42,7 @@ export function resolveApiUrl(
       "API URL is empty. Pass --api-url <url>, set DAYLO_API_URL, or run `daylo login` to configure one.",
     );
   }
-  return url.replace(/\/+$/, "");
+  return parseApiUrl(url).href.replace(/\/+$/, "");
 }
 
 export function requireApiKey(config: Config): string {
@@ -32,12 +52,33 @@ export function requireApiKey(config: Config): string {
   return config.apiKey;
 }
 
+/** Refuse to forward a stored API key outside the origin where it was issued. */
+export function assertApiKeyOrigin(apiUrl: string, config: Config): void {
+  if (config.apiUrl === undefined || config.apiUrl === "") {
+    throw new CliError(
+      "api_key_origin_missing",
+      "Stored API key is not bound to an API origin. Run `daylo login` again.",
+    );
+  }
+  const targetOrigin = parseApiUrl(apiUrl).origin;
+  const savedOrigin = parseApiUrl(config.apiUrl).origin;
+  if (targetOrigin !== savedOrigin) {
+    throw new CliError(
+      "api_origin_mismatch",
+      `Refusing to send the stored API key to ${targetOrigin}; it was issued for ${savedOrigin}. Run \`daylo login --api-url ${apiUrl}\` to use that API.`,
+    );
+  }
+}
+
 /** Build the authenticated API context for a command (config + flag/env overrides). */
 export function buildContext(apiUrlFlag: string | undefined, env: Env = process.env): ApiContext {
   const config = loadConfig(env);
+  const apiUrl = resolveApiUrl(apiUrlFlag, config, env);
+  const apiKey = requireApiKey(config);
+  assertApiKeyOrigin(apiUrl, config);
   return {
-    apiUrl: resolveApiUrl(apiUrlFlag, config, env),
-    apiKey: requireApiKey(config),
+    apiUrl,
+    apiKey,
   };
 }
 
