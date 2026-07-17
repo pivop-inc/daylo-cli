@@ -1,135 +1,212 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Daylo — one API for every smart scale</title>
+    <title>daylo — 記録も分析も、AIに任せる。</title>
     <meta
       name="description"
-      content="Daylo connects Withings and Tanita and gives developers and AI agents normalized weight data through one hosted API and an open-source CLI."
+      content="体重計に乗るだけで、記録は自動でたまる。分析もアドバイスも、AIに聞くだけ。daylo は、あなたの体重データを AI が扱える形に変えるサービスです。"
     />
-    <meta property="og:title" content="Daylo — one API for every smart scale" />
+    <link rel="canonical" href="https://daylo.cc/" />
+    <meta property="og:title" content="daylo — 記録も分析も、AIに任せる。" />
     <meta
       property="og:description"
-      content="Normalized smart-scale data through one hosted API and an open-source CLI."
+      content="体重計に乗るだけで、記録は自動でたまる。分析もアドバイスも、AIに聞くだけ。"
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://daylo.cc/" />
+    <meta property="og:site_name" content="daylo" />
+    <meta property="og:locale" content="ja_JP" />
     <meta property="og:image" content="https://daylo.cc/assets/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Daylo — one API for every smart scale. Withings, Tanita, hosted API, and CLI."
-    />
+    <meta property="og:image:alt" content="daylo — 記録も分析も、AIに任せる。" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://daylo.cc/assets/og.png" />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d110f'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='38' fill='%23e8b04b' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E"
-    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@700&text=%E8%A8%98%E9%8C%B2%E3%82%82%E5%88%86%E6%9E%90%E3%80%81AI%E3%81%AB%E4%BB%BB%E3%81%9B%E3%82%8B%E3%80%82%E4%B9%97%E3%81%A0%E3%81%91%E3%81%A7%E3%81%9F%E3%81%BE%E8%81%9E%E3%81%8F%E3%82%8F%E3%81%8B%E3%81%A9%E3%81%AE%E4%BD%93%E9%87%8D%E8%A8%88%E7%AE%A1%E7%90%86%E3%82%92%E6%B8%A1%E3%81%9D%E3%81%86&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="ruler" aria-hidden="true"></div>
-
     <header class="site-header">
-      <div class="container">
-        <a class="wordmark" href="#top">daylo<span class="cursor" aria-hidden="true"></span></a>
-        <nav class="site-nav" aria-label="Site">
-          <a class="nav-gh" href="https://github.com/pivop-inc/daylo-cli">
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path
-                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
-              />
-            </svg>
-            github
-          </a>
+      <div class="container header-inner">
+        <a class="logotype" href="#">daylo</a>
+        <nav class="header-nav" aria-label="サイト">
+          <a class="nav-link" href="https://github.com/pivop-inc/daylo-cli">GitHub&nbsp;↗</a>
         </nav>
       </div>
     </header>
 
-    <main id="top">
+    <main>
       <section class="hero">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="assets/hero-poster.jpg"
-          aria-hidden="true"
-        >
-          <source src="assets/hero-loop.mp4" type="video/mp4" />
-        </video>
+        <div class="container hero-inner">
+          <h1 class="hero-title">
+            <span class="rise" style="--d: 0s">記録も分析も、</span>
+            <span class="rise" style="--d: 0.08s">AIに任せる。</span>
+          </h1>
+          <p class="hero-sub rise" style="--d: 0.18s">
+            体重計に乗るだけで、記録は自動でたまる。分析もアドバイスも、AIに聞くだけ。<br
+              class="pc-only"
+            />daylo は、あなたの体重データを AI が扱える形に変えるサービスです。
+          </p>
+          <div class="hero-cta rise" style="--d: 0.28s">
+            <a class="btn-primary" href="https://github.com/pivop-inc/daylo-cli">GitHubで始める</a>
+          </div>
+          <p class="hero-note rise" style="--d: 0.36s">
+            Withings / Tanita 対応<span class="sep">·</span>無料ベータ<span class="sep">·</span
+            >カード登録不要
+          </p>
+        </div>
 
-        <div class="container">
-          <div class="hero-copy">
-            <h1 class="rise rise-1">One API for <em>every</em> smart scale.</h1>
-            <p class="hero-sub rise rise-2">
-              Daylo connects Withings and Tanita and gives developers and AI agents normalized
-              weight data through one hosted API and an open-source CLI.
-            </p>
-            <div class="hero-ctas rise rise-3">
-              <a class="btn btn-primary" href="https://github.com/pivop-inc/daylo-cli"
-                >Get started</a
+        <div class="trend" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 300"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                id="trendStroke"
+                x1="0"
+                y1="0"
+                x2="1440"
+                y2="0"
+                gradientUnits="userSpaceOnUse"
               >
+                <stop offset="0" stop-color="#7FD4BC" stop-opacity="0" />
+                <stop offset="0.25" stop-color="#7FD4BC" stop-opacity="0.28" />
+                <stop offset="1" stop-color="#7FD4BC" stop-opacity="0.9" />
+              </linearGradient>
+            </defs>
+            <polyline
+              class="trend-line"
+              pathLength="1"
+              vector-effect="non-scaling-stroke"
+              points="0,95 60,102 120,98 180,110 240,106 300,118 360,113 420,124 480,132 540,127 600,138 660,146 720,141 780,152 840,160 900,155 960,166 1020,173 1080,169 1140,178 1200,186 1260,181 1310,176 1370,163"
+              stroke="url(#trendStroke)"
+              stroke-width="1.5"
+            />
+            <g class="trend-dots" fill="#7FD4BC">
+              <circle cx="300" cy="118" r="2" fill-opacity="0.35" />
+              <circle cx="480" cy="132" r="2" fill-opacity="0.35" />
+              <circle cx="660" cy="146" r="2" fill-opacity="0.35" />
+              <circle cx="840" cy="160" r="2" fill-opacity="0.35" />
+              <circle cx="1020" cy="173" r="2" fill-opacity="0.35" />
+              <circle cx="1200" cy="186" r="2" fill-opacity="0.4" />
+              <circle cx="1310" cy="176" r="2" fill-opacity="0.5" />
+            </g>
+          </svg>
+          <div class="trend-latest">
+            <span class="trend-dot"></span>
+            <span class="trend-label">72.4 kg</span>
+          </div>
+        </div>
+
+        <div class="container chat-wrap">
+          <figure class="chat-card reveal">
+            <figcaption class="chat-system">
+              <span class="sys-dot"></span>
+              今朝 7:42、体重計から自動で記録
+              <span class="sys-value">72.4 kg</span>
+            </figcaption>
+            <div class="chat-body">
+              <div class="msg msg-user reveal" style="--d: 0.15s">
+                <p class="bubble">最近ちょっと増えてない?</p>
+              </div>
+              <div class="msg msg-ai reveal" style="--d: 0.35s">
+                <span class="ai-tag">AI</span>
+                <p class="ai-text">
+                  今週は
+                  <span class="num">+0.8kg</span
+                  >、木曜の夜から増えています。このままだと月末の目標に届かないので、今週末は歩く時間を少し増やしてみませんか?
+                </p>
+              </div>
             </div>
-            <p class="hero-note rise rise-3">
-              Withings + Tanita supported · free beta · no card required
+          </figure>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="container features-grid">
+          <div class="feature reveal" style="--d: 0s">
+            <h2 class="feature-title">乗るだけで、たまる。</h2>
+            <p class="feature-body">
+              体重計に乗れば、記録は自動。手で入力したり、アプリを開いたりしなくていい。
             </p>
           </div>
-
-          <div class="hero-demo rise rise-4">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              poster="assets/daylo-usage-video-poster.jpg"
-              aria-label="Daylo usage demo"
-            >
-              <source src="assets/daylo-usage-video.mp4" type="video/mp4" />
-            </video>
+          <div class="feature reveal" style="--d: 0.1s">
+            <h2 class="feature-title">聞くだけで、わかる。</h2>
+            <p class="feature-body">
+              「先月からどれくらい減った?」—— 分析はAIの仕事。グラフとにらめっこする必要はない。
+            </p>
+          </div>
+          <div class="feature reveal" style="--d: 0.2s">
+            <h2 class="feature-title">どの体重計でも。</h2>
+            <p class="feature-body">
+              Withings と Tanita に対応。メーカーごとのデータの違いは、daylo がぜんぶ引き受ける。
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="story">
-        <div class="container">
-          <blockquote>
-            Daylo started as a favor for one friend who needed weight tracking with
-            <em>zero willpower required</em> — step on the scale, walk away, let the software care.
-            The scale already ships the number. The vendors just hide it behind different APIs. So
-            we built the boring part once.
-            <span class="attribution">— why this exists</span>
-          </blockquote>
+      <section class="closing">
+        <div class="container closing-inner">
+          <h2 class="closing-title reveal">体重管理を、<br class="sp-only" />AIに渡そう。</h2>
+          <div class="reveal" style="--d: 0.1s">
+            <a class="btn-primary" href="https://github.com/pivop-inc/daylo-cli">GitHubで始める</a>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <address class="company-info">
-          <strong>Operated by pivop Inc. / 株式会社pivop</strong>
-          <span>
-            Kinokuniya Building 4F, 1-4-2 Ebisu-Minami, Shibuya-ku, Tokyo 150-0022, Japan
-          </span>
-          <span>Representative: Suguru Katsuyama / 勝山 優</span>
+        <address class="company">
+          <strong>株式会社pivop / pivop Inc.</strong>
+          <span>〒150-0022 東京都渋谷区恵比寿南 1-4-2 紀伊国屋ビル 4F</span>
+          <span>代表者: 勝山 優</span>
           <a href="mailto:hello@pivop.jp">hello@pivop.jp</a>
         </address>
-        <nav class="footer-links" aria-label="Footer">
+        <nav class="footer-links" aria-label="フッター">
           <a href="https://github.com/pivop-inc/daylo-cli">GitHub</a>
-          <a href="privacy-en.html">Privacy</a>
-          <a href="terms-en.html">Terms</a>
+          <a href="https://www.npmjs.com/package/daylo-cli">npm</a>
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="terms.html">利用規約</a>
         </nav>
         <span class="copyright">© pivop Inc.</span>
       </div>
     </footer>
+
+    <script>
+      const els = document.querySelectorAll(".reveal");
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduced || !("IntersectionObserver" in window)) {
+        els.forEach((el) => el.classList.add("in"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.25 },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>
